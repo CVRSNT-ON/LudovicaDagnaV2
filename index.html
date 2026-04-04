@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ludovica Benedetta Dagna — Art Curator, Art Manager, and Project Coordinator working in the field of contemporary art.">
+<meta name="author" content="Ludovica Benedetta Dagna">
+<meta name="theme-color" content="#FAF7F6">
+<title>Ludovica Benedetta Dagna — Art Curator</title>
+<meta property="og:title" content="Ludovica Benedetta Dagna — Art Curator">
+<meta property="og:description" content="Art Curator, Art Manager, and Project Coordinator working in the field of contemporary art.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- lax.js -->
+<script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
+
+<!-- Netlify Identity (for CMS login) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<style>
+/* ─────────────────────────────
+   RESET & TOKENS
+───────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#FAF7F6;
+  --bg-blush:#F8EEEF;
+  --text:#1A1315;
+  --text-l:#8A7272;
+  --text-m:#5C4848;
+  --accent:#9B2355;
+  --accent-mid:#C4657A;
+  --accent-deep:#6E1A3A;
+  --accent-gold:#C8962A;
+  --accent-light:#F0C4D0;
+  --blush:#F9EEF1;
+  --border:#EDD5DC;
+  --card:#FFFAFB;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Raleway',-apple-system,sans-serif;
+  --max-w:1360px;
+  --g:clamp(1.25rem,5vw,4rem);
+  --nav-h:72px
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 8px)}
+
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden
+}
+
+img{display:block;max-width:100%;user-select:none;-webkit-user-select:none}
+
+/* ─────────────────────────────
+   NAV
+───────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--nav-h);
+  padding:0 var(--g);
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .4s,backdrop-filter .4s,box-shadow .4s
+}
+.nav.scrolled{
+  background:rgba(250,247,246,.94);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 1px 0 var(--border)
+}
+
+/* Logo in nav */
+.nav-logo-img{
+  height:44px;width:auto;max-width:160px;object-fit:contain;
+  transition:opacity .3s;
+  flex-shrink:0
+}
+.nav-logo-img:hover{opacity:.75}
+
+.nav-links{display:flex;gap:2.25rem;list-style:none;align-items:center}
+.nav-links a{
+  font-size:.65rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--text-l);text-decoration:none;
+  transition:color .3s;white-space:nowrap
+}
+.nav-links a:hover{color:var(--accent)}
+
+/* ─────────────────────────────
+   HAMBURGER + MOBILE MENU
+───────────────────────────── */
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  width:26px;height:18px;position:relative;z-index:210;
+  flex-direction:column;justify-content:space-between;padding:2px 0;flex-shrink:0
+}
+.hamburger span{
+  display:block;width:100%;height:1px;
+  background:var(--text);
+  transition:all .35s cubic-bezier(.77,0,.175,1)
+}
+.hamburger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:205;
+  background:rgba(250,247,246,.98);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  flex-direction:column;justify-content:center;align-items:center;
+  gap:2rem;padding:2rem
+}
+.mobile-menu.open{display:flex}
+.mobile-menu-logo{height:80px;width:80px;object-fit:contain;margin-bottom:1rem}
+.mobile-menu a{
+  font-family:var(--display);font-size:clamp(2rem,7vw,2.8rem);
+  font-weight:300;font-style:italic;
+  color:var(--text);text-decoration:none;
+  transition:color .3s
+}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-menu-close{
+  position:absolute;top:1.25rem;right:var(--g);
+  background:none;border:none;
+  font-size:1.8rem;color:var(--text-l);
+  cursor:pointer;z-index:211;padding:.5rem;line-height:1
+}
+
+/* ─────────────────────────────
+   HERO
+───────────────────────────── */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:calc(var(--nav-h) + 3rem) var(--g) clamp(4rem,8vw,7rem);
+  position:relative;overflow:hidden
+}
+
+/* Background blobs */
+.hero-blob{position:absolute;pointer-events:none;border-radius:50%}
+.hero-blob-1{
+  width:min(75vw,700px);height:min(75vw,700px);
+  top:-25%;right:-15%;
+  background:radial-gradient(circle,rgba(240,196,208,.5) 0%,transparent 68%)
+}
+.hero-blob-2{
+  width:min(50vw,500px);height:min(50vw,500px);
+  bottom:-20%;left:-12%;
+  background:radial-gradient(circle,rgba(245,232,236,.7) 0%,transparent 68%)
+}
+.hero-blob-3{
+  width:min(30vw,300px);height:min(30vw,300px);
+  top:40%;left:30%;
+  background:radial-gradient(circle,rgba(155,35,85,.06) 0%,transparent 70%)
+}
+
+/* Decorative background monogram */
+.hero-bg-monogram{
+  position:absolute;bottom:-1rem;right:var(--g);
+  font-family:var(--display);
+  font-size:clamp(20vw,30vw,400px);
+  font-weight:300;font-style:italic;
+  color:rgba(237,213,220,.2);
+  line-height:1;letter-spacing:-.05em;
+  pointer-events:none;user-select:none;
+  white-space:nowrap
+}
+
+.hero-content{position:relative;z-index:1;max-width:min(900px,100%)}
+
+.hero-overline{
+  font-size:clamp(.58rem,.7rem + .1vw,.7rem);
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent-mid);margin-bottom:clamp(1.2rem,3vw,2rem);
+  font-weight:600;
+  opacity:0;animation:fadeUp .8s ease forwards .2s
+}
+
+.hero h1{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(3rem,10vw,9rem);
+  line-height:.95;letter-spacing:-.025em;
+  margin-bottom:clamp(1rem,2.5vw,1.75rem);
+  /* No global animation — each line animates independently */
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+
+/* ── Name line reveal ── */
+.name-line{
+  display:block;
+  overflow:hidden;
+  /* Generous descender room — Cormorant 'g','y','p' at large sizes need ~0.3em */
+  padding-bottom:.32em;
+  margin-bottom:-.32em
+}
+.name-inner{
+  display:block;
+  transform:translateY(110%);
+  opacity:0
+}
+/* Staggered entrance — triggered by JS adding .name-animate to h1 */
+.hero h1.name-animate .name-inner{
+  animation:nameReveal .9s cubic-bezier(.22,.6,.36,1) forwards
+}
+.hero h1.name-animate .name-line:nth-child(1) .name-inner{ animation-delay:.25s }
+.hero h1.name-animate .name-line:nth-child(2) .name-inner{ animation-delay:.55s }
+.hero h1.name-animate .name-line:nth-child(3) .name-inner{ animation-delay:.85s }
+
+@keyframes nameReveal{
+  from{ transform:translateY(110%); opacity:0 }
+  to  { transform:translateY(0);    opacity:1 }
+}
+
+.hero-role{
+  font-family:var(--display);font-weight:300;font-style:italic;
+  font-size:clamp(.9rem,1.8vw,1.45rem);
+  color:var(--text-l);letter-spacing:.02em;
+  margin-bottom:clamp(2rem,4vw,3rem);
+  opacity:0;animation:fadeUp .8s ease forwards .65s
+}
+
+.hero-cta-wrap{
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:clamp(1rem,2vw,2rem);
+  opacity:0;animation:fadeUp .8s ease forwards .85s
+}
+
+.hero-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:.9rem 2.4rem;
+  font-size:.65rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text);text-decoration:none;
+  border:1px solid var(--text);
+  transition:background .3s,color .3s,border-color .3s
+}
+.hero-cta:hover,.hero-cta:focus-visible{
+  background:var(--accent);color:#fff;border-color:var(--accent)
+}
+
+.hero-cta-alt{
+  display:inline-flex;align-items:center;min-height:48px;
+  font-size:.65rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-l);text-decoration:none;
+  transition:color .3s
+}
+.hero-cta-alt:hover{color:var(--accent)}
+
+/* Scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:2rem;right:var(--g);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:0;animation:fadeUp .8s ease forwards 1.2s
+}
+.hero-scroll span{
+  font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-l);writing-mode:vertical-rl;font-weight:500
+}
+.hero-scroll-line{
+  width:1px;height:56px;
+  background:linear-gradient(to bottom,var(--accent-mid),transparent)
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ─────────────────────────────
+   SECTIONS BASE
+───────────────────────────── */
+section{padding:clamp(4rem,8vw,8rem) var(--g)}
+
+.section-label{
+  font-size:.62rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.8rem
+}
+.section-title{
+  font-family:var(--display);font-weight:300;
+  font-size:clamp(1.9rem,4vw,3.6rem);
+  line-height:1.1;margin-bottom:1.5rem
+}
+.section-title em{font-style:italic;color:var(--accent)}
+
+/* ─────────────────────────────
+   ABOUT
+───────────────────────────── */
+.about-inner{
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:clamp(2.5rem,6vw,7rem);
+  align-items:start;
+  max-width:var(--max-w);margin:0 auto
+}
+
+.about-portrait-wrap{position:relative}
+
+.about-portrait{
+  aspect-ratio:4/5;overflow:hidden;
+  box-shadow:0 20px 60px rgba(155,35,85,.1)
+}
+.about-portrait img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;pointer-events:none
+}
+
+/* Decorative offset frame */
+.about-portrait-deco{
+  position:absolute;
+  bottom:-1.5rem;right:-1.5rem;
+  width:60%;height:60%;
+  border:1px solid var(--border);
+  z-index:-1
+}
+
+/* Vertical label */
+.about-portrait-tag{
+  position:absolute;
+  top:50%;right:-2.25rem;
+  transform:translateY(-50%) rotate(90deg);
+  font-family:var(--display);font-style:italic;
+  font-size:.78rem;color:var(--accent-mid);
+  letter-spacing:.15em;white-space:nowrap;
+  transform-origin:center center
+}
+
+.about-text p{
+  font-size:.92rem;line-height:1.9;color:var(--text-l);
+  margin-bottom:1.25rem;max-width:560px
+}
+.about-text p.lead{
+  font-family:var(--display);font-size:clamp(1rem,1.4vw,1.2rem);
+  font-style:italic;color:var(--text-m);line-height:1.65
+}
+
+.about-stats{
+  display:flex;flex-wrap:wrap;gap:2rem;
+  margin-top:2rem;padding-top:2rem;
+  border-top:1px solid var(--border)
+}
+.about-stat-num{
+  font-family:var(--display);font-size:2.2rem;
+  font-weight:300;color:var(--accent);line-height:1;
+  margin-bottom:.2rem
+}
+.about-stat-lbl{
+  font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-l);font-weight:600
+}
+
+/* ─────────────────────────────
+   TAGS STRIP
+───────────────────────────── */
+.tags-strip{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:2.25rem var(--g)
+}
+.tags-inner{
+  max-width:var(--max-w);margin:0 auto;
+  display:flex;align-items:center;
+  gap:clamp(1.5rem,3vw,3.5rem);flex-wrap:wrap
+}
+.tags-label{
+  font-family:var(--display);font-size:clamp(.95rem,1.2vw,1.1rem);
+  font-style:italic;color:var(--text-l);white-space:nowrap;
+  flex-shrink:0
+}
+.tags-list{display:flex;gap:.65rem;flex-wrap:wrap;flex:1}
+.tag{
+  display:inline-flex;align-items:center;
+  padding:.42rem .9rem;
+  border:1px solid var(--border);
+  font-size:.6rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--text-l);
+  transition:border-color .3s,color .3s,background .3s
+}
+.tag:hover{border-color:var(--accent);color:var(--accent);background:var(--blush)}
+
+/* ─────────────────────────────
+   SERVICES
+───────────────────────────── */
+.services-section{background:var(--blush)}
+.services-header{max-width:var(--max-w);margin:0 auto 2.5rem}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  max-width:var(--max-w);margin:0 auto;
+  background:var(--border)
+}
+.service-card{
+  background:var(--card);
+  padding:clamp(2rem,3.5vw,3rem) clamp(1.5rem,3vw,2.75rem);
+  transition:box-shadow .4s,transform .4s;
+  position:relative;overflow:hidden
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;
+  width:3px;height:0;background:var(--accent);
+  transition:height .5s ease
+}
+.service-card:hover::before{height:100%}
+.service-card:hover{
+  box-shadow:0 20px 60px rgba(155,35,85,.08);
+  transform:translateY(-4px);
+  z-index:1
+}
+
+.service-num{
+  font-family:var(--display);font-size:3rem;font-weight:300;
+  color:var(--border);line-height:1;margin-bottom:1.2rem;font-style:italic
+}
+.service-card h3{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(1.35rem,2vw,1.7rem);
+  margin-bottom:.8rem;line-height:1.15
+}
+.service-card p{
+  font-size:.875rem;color:var(--text-l);line-height:1.85
+}
+.service-tag{
+  display:inline-block;margin-top:1.5rem;
+  font-size:.58rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent-gold);
+  border-bottom:1px solid currentColor;padding-bottom:.15rem
+}
+
+/* ─────────────────────────────
+   PHILOSOPHY / QUOTE
+───────────────────────────── */
+.philosophy-section{position:relative;overflow:hidden}
+.philosophy-bg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--display);
+  font-size:clamp(15vw,22vw,280px);
+  font-weight:300;font-style:italic;
+  color:rgba(237,213,220,.16);
+  white-space:nowrap;pointer-events:none;
+  user-select:none;line-height:1
+}
+.philosophy-inner{
+  position:relative;z-index:1;
+  max-width:780px;margin:0 auto;text-align:center
+}
+blockquote.philosophy-quote{
+  font-family:var(--display);
+  font-size:clamp(1.25rem,2.5vw,2rem);
+  font-weight:300;font-style:italic;
+  line-height:1.6;color:var(--text);
+  padding:clamp(2rem,5vw,4rem) 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border)
+}
+blockquote.philosophy-quote::before{
+  content:'\201C';
+  display:block;font-size:4.5rem;
+  color:var(--accent-light);line-height:1;
+  margin-bottom:.4rem;font-style:normal
+}
+.philosophy-cite{
+  display:block;font-style:normal;
+  font-family:var(--body);font-size:.6rem;
+  font-weight:700;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--accent);
+  margin-top:1.5rem
+}
+
+/* ─────────────────────────────
+   CONTACT
+───────────────────────────── */
+.contact-inner{max-width:var(--max-w);margin:0 auto}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.4fr;
+  gap:clamp(2rem,6vw,6rem);margin-top:2.5rem
+}
+.contact-info p{
+  font-size:.92rem;color:var(--text-l);line-height:1.85;
+  margin-bottom:1.25rem;max-width:380px
+}
+.contact-info .lead{
+  font-family:var(--display);font-style:italic;
+  font-size:clamp(1rem,1.4vw,1.1rem);color:var(--text-m)
+}
+.contact-links{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem}
+.contact-links a{
+  display:inline-flex;align-items:center;gap:.65rem;
+  min-height:44px;
+  font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  transition:color .3s
+}
+.contact-links a:hover{color:var(--accent-deep)}
+
+.contact-form{display:flex;flex-direction:column;gap:1.1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+
+.contact-form label{
+  font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-l);display:block;margin-bottom:.35rem
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form select{
+  width:100%;min-height:48px;
+  background:var(--card);border:1px solid var(--border);
+  padding:.85rem 1.1rem;
+  font-family:var(--body);font-size:.9rem;font-weight:400;
+  color:var(--text);outline:none;
+  transition:border-color .3s;
+  -webkit-appearance:none;appearance:none;
+  border-radius:0
+}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus{border-color:var(--accent)}
+.contact-form textarea{min-height:140px;resize:vertical}
+.contact-form select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7272' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1.1rem center;
+  padding-right:2.5rem
+}
+
+.contact-form button{
+  align-self:flex-start;
+  min-height:52px;padding:.95rem 3rem;
+  background:var(--accent);color:#fff;border:none;
+  font-family:var(--body);font-size:.65rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  cursor:pointer;transition:background .3s
+}
+.contact-form button:hover{background:var(--accent-deep)}
+.contact-form button:disabled{opacity:.6;cursor:not-allowed}
+
+/* ─────────────────────────────
+   FOOTER
+───────────────────────────── */
+.footer-wrap{border-top:1px solid var(--border)}
+.footer{
+  display:flex;justify-content:space-between;align-items:center;
+  max-width:var(--max-w);margin:0 auto;
+  padding:1.75rem var(--g);
+  font-size:.68rem;color:var(--text-l);
+  flex-wrap:wrap;gap:1rem
+}
+.footer-logo{
+  height:36px;width:auto;max-width:110px;object-fit:contain;opacity:.8
+}
+.footer a{color:var(--text-l);text-decoration:none;transition:color .3s}
+.footer a:hover{color:var(--accent)}
+.footer-links{display:flex;gap:1.75rem;align-items:center;flex-wrap:wrap}
+
+/* ─────────────────────────────
+   COLLABORATIONS — SCROLLING STRIP
+───────────────────────────── */
+.collab-section{
+  background:var(--blush);
+  padding:clamp(4rem,8vw,8rem) 0
+}
+.collab-header{
+  max-width:var(--max-w);margin:0 auto 3rem;
+  padding:0 var(--g)
+}
+
+/* The runner clips horizontal overflow */
+.collab-runner{
+  overflow:hidden;
+  position:relative;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--card)
+}
+/* Soft fade on left/right edges */
+.collab-runner::before,
+.collab-runner::after{
+  content:'';position:absolute;top:0;bottom:0;z-index:2;
+  width:80px;pointer-events:none
+}
+.collab-runner::before{left:0;background:linear-gradient(to right,var(--card),transparent)}
+.collab-runner::after{right:0;background:linear-gradient(to left,var(--card),transparent)}
+
+/* The scrolling belt — JS will clone children to fill it */
+.collab-belt{
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  width:max-content;
+  animation:collab-scroll 38s linear infinite
+}
+.collab-runner:hover .collab-belt{animation-play-state:paused}
+
+@keyframes collab-scroll{
+  0%  {transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* Each logo cell — identical size, no exceptions */
+.cl{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:200px;
+  height:120px;
+  padding:0 28px;
+  border-right:1px solid var(--border);
+  text-decoration:none;
+  transition:background .2s;
+  box-sizing:border-box
+}
+.cl:hover{background:var(--blush)}
+
+/* Every image — same bounding box, letterboxed */
+.cl img{
+  display:block !important;
+  width:140px !important;
+  height:56px !important;
+  max-width:140px !important;
+  max-height:56px !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  filter:grayscale(1) opacity(.6);
+  transition:filter .3s;
+  flex-shrink:0
+}
+.cl:hover img{filter:grayscale(0) opacity(1)}
+
+/* OASI text badge */
+.cl-badge{
+  font-family:var(--display);font-weight:400;
+  font-size:.88rem;letter-spacing:.1em;line-height:1.25;
+  color:var(--text-m);text-align:center;transition:color .3s;
+  width:140px
+}
+.cl-badge small{
+  display:block;font-size:.5rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-l);margin-top:.3rem;font-family:var(--body)
+}
+.cl:hover .cl-badge{color:var(--accent)}
+.cl:hover .cl-badge small{color:var(--accent-mid)}
+
+@media(prefers-reduced-motion:reduce){
+  .collab-belt{animation:none}
+}
+@media(max-width:767px){
+  .cl{width:155px;height:96px;padding:0 20px}
+  .cl img{width:110px !important;height:44px !important;max-width:110px !important;max-height:44px !important}
+  .cl-badge{width:110px;font-size:.78rem}
+  .collab-belt{animation-duration:24s}
+}
+
+/* ─────────────────────────────
+   REELS
+───────────────────────────── */
+.reels-section{
+  background:var(--bg);
+  padding:clamp(4rem,8vw,8rem) var(--g)
+}
+.reels-header{
+  max-width:var(--max-w);margin:0 auto 3rem
+}
+.reels-subline{
+  font-size:.88rem;color:var(--text-l);
+  margin-top:.5rem;line-height:1.6
+}
+.reels-subline a{
+  color:var(--accent);text-decoration:none;
+  font-weight:600
+}
+.reels-subline a:hover{color:var(--accent-deep)}
+
+.reels-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  max-width:var(--max-w);margin:0 auto
+}
+
+/* Force embeds to fill their cell cleanly */
+.reels-grid .instagram-media{
+  margin:0 auto !important;
+  min-width:0 !important;
+  width:100% !important;
+  max-width:100% !important
+}
+
+@media(max-width:900px){
+  .reels-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:540px){
+  .reels-grid{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────
+   WHATSAPP FLOATING BUTTON
+───────────────────────────── */
+.wa-float{
+  position:fixed;
+  bottom:clamp(1.25rem,3vw,2rem);
+  left:clamp(1.25rem,3vw,2rem);
+  z-index:800;
+  width:56px;height:56px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.35),0 2px 8px rgba(0,0,0,.12);
+  text-decoration:none;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease
+}
+.wa-float:hover{
+  transform:scale(1.12);
+  box-shadow:0 8px 30px rgba(37,211,102,.45),0 4px 12px rgba(0,0,0,.15)
+}
+.wa-float svg{width:28px;height:28px;fill:#fff;flex-shrink:0}
+/* Pulse ring — subtle attention catcher */
+.wa-float::before{
+  content:'';
+  position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid rgba(37,211,102,.4);
+  animation:wa-pulse 2.5s ease-out infinite;
+  pointer-events:none
+}
+@keyframes wa-pulse{
+  0%{transform:scale(1);opacity:1}
+  70%{transform:scale(1.25);opacity:0}
+  100%{transform:scale(1.25);opacity:0}
+}
+/* Tooltip on hover */
+.wa-float::after{
+  content:'WhatsApp';
+  position:absolute;left:calc(100% + .75rem);
+  background:rgba(26,19,21,.88);color:#fff;
+  font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  padding:.4rem .8rem;border-radius:2px;
+  opacity:0;transform:translateX(-6px);
+  transition:opacity .2s ease,transform .2s ease;
+  pointer-events:none
+}
+.wa-float:hover::after{opacity:1;transform:translateX(0)}
+@media(max-width:767px){
+  .wa-float{width:50px;height:50px}
+  .wa-float svg{width:24px;height:24px}
+  .wa-float::after{display:none}
+}
+
+/* ─────────────────────────────
+   REVEAL
+───────────────────────────── */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
+.reveal-d4{transition-delay:.4s}
+
+/* ─────────────────────────────
+   RESPONSIVE — TABLET
+───────────────────────────── */
+@media(max-width:900px){
+  .services-grid{grid-template-columns:1fr}
+  .about-portrait-tag{display:none}
+}
+
+/* ─────────────────────────────
+   RESPONSIVE — MOBILE
+───────────────────────────── */
+@media(max-width:767px){
+
+  :root{--nav-h:60px}
+
+  /* Nav */
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-logo-img{height:36px;width:auto;max-width:130px}
+
+  /* Hero */
+  .hero{
+    justify-content:center;
+    padding-top:calc(var(--nav-h) + 2rem);
+    padding-bottom:3rem;
+    min-height:100svh;
+    max-height:100svh
+  }
+  .hero h1{font-size:clamp(2rem,11vw,3.8rem);line-height:.95}
+  .hero-role{
+    font-size:.95rem;
+    display:flex;flex-direction:column;gap:.2rem
+  }
+  .hero-overline{
+    font-size:.6rem;
+    display:flex;flex-wrap:wrap;gap:.3rem
+  }
+  .hero-bg-monogram{
+    font-size:clamp(28vw,50vw,220px);
+    bottom:-0.5rem;right:-1rem
+  }
+  .hero-scroll{display:none}
+  .hero-cta-wrap{flex-direction:column;align-items:flex-start;gap:.85rem}
+  .hero-cta{width:100%;justify-content:center;padding:1rem}
+  .hero-cta-alt{align-self:center}
+
+  /* About */
+  .about-inner{grid-template-columns:1fr;gap:2.5rem}
+  .about-portrait{
+    max-width:100%;aspect-ratio:3/4;
+    max-height:70svh
+  }
+  .about-portrait-deco{display:none}
+  .about-text p{max-width:100%}
+  .about-stats{gap:1.5rem}
+
+  /* Tags */
+  .tags-inner{flex-direction:column;align-items:flex-start;gap:1rem}
+
+  /* Services */
+  .services-grid{gap:1px}
+  .service-card{padding:2rem 1.5rem}
+
+  /* Philosophy */
+  .philosophy-bg{font-size:30vw}
+
+  /* Contact */
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .contact-info p{max-width:100%}
+  .form-row{grid-template-columns:1fr}
+  .contact-form button{width:100%;justify-content:center}
+
+  /* Footer */
+  .footer{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+
+/* Tap target safety for links */
+@media(max-width:767px){
+  a,button{min-height:44px;min-width:44px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════
+     NAV
+══════════════════════════ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="#" aria-label="Ludovica Benedetta Dagna — Home">
+    <img src="logo.png" alt="LD Digital Atelier Logo" class="nav-logo-img">
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#collaborations">Collaborations</a></li>
+    <li><a href="#reels">Reels</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&times;</button>
+  <img src="logo.png" alt="" class="mobile-menu-logo" aria-hidden="true">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#philosophy" onclick="closeMobile()">Philosophy</a>
+  <a href="#collaborations" onclick="closeMobile()">Collaborations</a>
+  <a href="#reels" onclick="closeMobile()">Reels</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+
+<!-- ══════════════════════════
+     HERO
+══════════════════════════ -->
+<section class="hero" id="hero" aria-label="Introduction">
+
+  <!-- Background blobs -->
+  <div class="hero-blob hero-blob-1" id="lax-blob-1" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-2" id="lax-blob-2" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-3" id="lax-blob-3" aria-hidden="true"></div>
+
+  <!-- Decorative background monogram -->
+  <div class="hero-bg-monogram" id="lax-monogram" aria-hidden="true">LD</div>
+
+  <div class="hero-content">
+    <p class="hero-overline" id="cms-hero-overline">Art Curator &ensp;·&ensp; Art Manager &ensp;·&ensp; Project Coordinator</p>
+    <h1 id="lax-h1">
+      <span class="name-line"><span class="name-inner" id="cms-hero-name1">Ludovica</span></span>
+      <span class="name-line"><em class="name-inner" id="cms-hero-name2">Benedetta</em></span>
+      <span class="name-line"><span class="name-inner" id="cms-hero-name3">Dagna</span></span>
+    </h1>
+    <p class="hero-role" id="lax-sub">
+      <span id="cms-hero-role">Contemporary Art &nbsp;&mdash;&nbsp; Exhibition Curatorship &nbsp;&mdash;&nbsp; Cultural Mediation</span>
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#contact" class="hero-cta" id="cms-hero-cta-primary">Get in Touch</a>
+      <a href="#about" class="hero-cta-alt" id="cms-hero-cta-secondary">Discover More &rarr;</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     ABOUT
+══════════════════════════ -->
+<section id="about" aria-label="About Ludovica">
+  <div class="about-inner">
+
+    <!-- Portrait -->
+    <div class="about-portrait-wrap reveal" id="lax-portrait">
+      <div class="about-portrait">
+        <img src="PHOTO-2026-03-24-07-59-51.jpg"
+             alt="Ludovica Benedetta Dagna in front of a contemporary artwork"
+             loading="lazy">
+      </div>
+      <div class="about-portrait-deco" aria-hidden="true"></div>
+      <span class="about-portrait-tag" aria-hidden="true">Art Curator &middot; Art Manager</span>
+    </div>
+
+    <!-- Bio -->
+    <div class="about-text">
+      <p class="section-label" id="cms-about-label">The Curator</p>
+      <h2 class="section-title" id="cms-about-title">Curatorship as a Form<br>of <em>Mediation</em></h2>
+      <p class="lead" id="cms-about-p1">Ludovica Benedetta Dagna is an Art Curator, Art Manager, and Project Coordinator working in the field of contemporary art.</p>
+      <p id="cms-about-p2">Her practice focuses on the development and realization of exhibition projects, overseeing each stage of the curatorial and organizational process — from concept definition and artist selection to the final production of the exhibition. Her approach combines critical sensitivity, curatorial vision, and operational precision.</p>
+      <p id="cms-about-p3">Throughout her career she has collaborated with artists, cultural partners, and institutions, developing expertise across curatorial planning, content development, project coordination, and exhibition logistics. Her work is distinguished by a strong commitment to supporting artistic research through carefully structured exhibition narratives.</p>
+      <p id="cms-about-p4">Alongside her curatorial activity, she works as an Art Manager, assisting artists in the development, positioning, and communication of their professional practice. She has established international collaborations in digital curation, connecting contemporary art with digital strategy and online representation.</p>
+
+      <div class="about-stats" id="cms-about-stats">
+        <div>
+          <div class="about-stat-num">IT</div>
+          <div class="about-stat-lbl">International Reach</div>
+        </div>
+        <div>
+          <div class="about-stat-num">360°</div>
+          <div class="about-stat-lbl">End-to-End Process</div>
+        </div>
+        <div>
+          <div class="about-stat-num">∞</div>
+          <div class="about-stat-lbl">Artistic Dialogues</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     TAGS STRIP
+══════════════════════════ -->
+<div class="tags-strip reveal">
+  <div class="tags-inner">
+    <span class="tags-label">Areas of Practice</span>
+    <div class="tags-list" role="list" id="cms-tags-list">
+      <span class="tag" role="listitem">Exhibition Planning</span>
+      <span class="tag" role="listitem">Artist Selection</span>
+      <span class="tag" role="listitem">Content Development</span>
+      <span class="tag" role="listitem">Exhibition Logistics</span>
+      <span class="tag" role="listitem">Art Management</span>
+      <span class="tag" role="listitem">Digital Strategy</span>
+      <span class="tag" role="listitem">Online Representation</span>
+      <span class="tag" role="listitem">Website Creation</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════
+     SERVICES
+══════════════════════════ -->
+<section id="services" class="services-section" aria-label="Services">
+  <div class="services-header">
+    <p class="section-label" id="cms-services-label">What I Do</p>
+    <h2 class="section-title" id="cms-services-title">Services</h2>
+  </div>
+  <div class="services-grid" id="cms-services-grid">
+
+    <article class="service-card reveal reveal-d1" id="lax-card-1">
+      <div class="service-num" aria-hidden="true">01</div>
+      <h3>Curatorial Planning</h3>
+      <p>Concept definition, thematic research, artist selection, and the development of coherent exhibition narratives. Each project is approached with critical depth, ensuring an articulate artistic vision from inception to opening night.</p>
+      <span class="service-tag">Concept &middot; Research &middot; Selection</span>
+    </article>
+
+    <article class="service-card reveal reveal-d2" id="lax-card-2">
+      <div class="service-num" aria-hidden="true">02</div>
+      <h3>Exhibition Production</h3>
+      <p>Full organizational oversight of exhibition logistics, installation planning, and production management. From venue coordination to technical requirements, every operational detail is handled with precision and professional care.</p>
+      <span class="service-tag">Logistics &middot; Installation &middot; Production</span>
+    </article>
+
+    <article class="service-card reveal reveal-d3" id="lax-card-3">
+      <div class="service-num" aria-hidden="true">03</div>
+      <h3>Art Management</h3>
+      <p>Strategic support for artists in the development, positioning, and communication of their professional practice — helping build a coherent public profile, define artistic identity, and navigate the contemporary art world with confidence.</p>
+      <span class="service-tag">Positioning &middot; Communication &middot; Strategy</span>
+    </article>
+
+    <article class="service-card reveal reveal-d4" id="lax-card-4">
+      <div class="service-num" aria-hidden="true">04</div>
+      <h3>Digital Curation</h3>
+      <p>International collaborations connecting contemporary art with digital strategy and online representation. Creation of bespoke artist websites that translate each artistic vision into a refined, coherent, and lasting digital presence.</p>
+      <span class="service-tag">Digital &middot; Website &middot; Online Presence</span>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     PHILOSOPHY
+══════════════════════════ -->
+<section id="philosophy" class="philosophy-section" aria-label="Philosophy">
+  <div class="philosophy-bg" id="lax-phil-bg" aria-hidden="true">vision</div>
+  <div class="philosophy-inner">
+    <p class="section-label" id="cms-phil-label" style="text-align:center">Philosophy</p>
+    <blockquote class="philosophy-quote">
+      <span id="cms-phil-quote">Curatorship is not only a cultural and critical practice, but also a form of mediation between concept, production, and visibility — one capable of transforming both physical and digital spaces into meaningful platforms for artistic dialogue.</span>
+      <cite class="philosophy-cite" id="cms-phil-cite">— Ludovica Benedetta Dagna</cite>
+    </blockquote>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     COLLABORATIONS
+══════════════════════════ -->
+<section id="collaborations" class="collab-section" aria-label="Collaborations">
+
+  <div class="collab-header reveal">
+    <p class="section-label">Network</p>
+    <h2 class="section-title">Collaborations</h2>
+  </div>
+
+  <!-- Single scrolling strip. JS duplicates children for seamless loop. -->
+  <div class="collab-runner">
+    <div class="collab-belt" id="collabBelt">
+
+      <a class="cl" href="https://www.oasi-art.eu/" target="_blank" rel="noopener noreferrer" aria-label="OASI">
+        <div class="cl-badge">O A S I<small>Art Exhibitions &amp; Cultural Projects</small></div>
+      </a>
+
+      <a class="cl" href="https://galeriamarzia.com/" target="_blank" rel="noopener noreferrer" aria-label="Galeria Marzia">
+        <img src="collab/logo-marzia.png" alt="Galeria Marzia">
+      </a>
+
+      <a class="cl" href="https://spaziosv.com/" target="_blank" rel="noopener noreferrer" aria-label="Spazio SV">
+        <img src="https://spaziosv.com/wp-content/uploads/2019/02/logo-sito-sv.png" alt="Spazio SV">
+      </a>
+
+      <a class="cl" href="https://www.galleriabellini.com/" target="_blank" rel="noopener noreferrer" aria-label="Galleria Bellini">
+        <img src="collab/logo-bellini.png" alt="Galleria Bellini">
+      </a>
+
+      <a class="cl" href="https://www.galleriacael.com/" target="_blank" rel="noopener noreferrer" aria-label="Galleria Cael">
+        <img src="https://www.galleriacael.com/wp-content/uploads/2022/11/LOGO-NUOVO-1-540x540-1.jpg" alt="Galleria Cael">
+      </a>
+
+      <a class="cl" href="https://www.palazzopisanirevedin.it/" target="_blank" rel="noopener noreferrer" aria-label="Palazzo Pisani Revedin">
+        <img src="collab/logo-pisani.png" alt="Palazzo Pisani Revedin" style="border-radius:3px">
+      </a>
+
+      <a class="cl" href="https://www.guidotommasi.it/" target="_blank" rel="noopener noreferrer" aria-label="Guido Tommasi Editore">
+        <img src="https://www.guidotommasi.it/resources/images/logo_gte.png" alt="Guido Tommasi Editore">
+      </a>
+
+      <a class="cl" href="https://www.casainternazionaledelledonne.org/" target="_blank" rel="noopener noreferrer" aria-label="Casa Internazionale delle Donne">
+        <img src="collab/logo-casadonne.png" alt="Casa Internazionale delle Donne">
+      </a>
+
+      <a class="cl" href="https://museodelmarsantapola.com/" target="_blank" rel="noopener noreferrer" aria-label="Museo del Mar Santa Pola">
+        <img src="https://museodelmarsantapola.com/wp-content/uploads/2020/12/museodelmarsantapola_logoweb_horizontal.jpg" alt="Museo del Mar Santa Pola">
+      </a>
+
+      <a class="cl" href="https://www.medinaroma.com/" target="_blank" rel="noopener noreferrer" aria-label="Medina Art Gallery Roma">
+        <img src="https://www.medinaroma.com/wp-content/uploads/2019/04/logo_Medina_new_sfondo_trasparente_per_header_sito_small.png" alt="Medina Art Gallery Roma">
+      </a>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════
+     REELS
+══════════════════════════ -->
+<section id="reels" class="reels-section" aria-label="Reels">
+
+  <div class="reels-header reveal">
+    <p class="section-label" id="cms-reels-label">Video</p>
+    <h2 class="section-title" id="cms-reels-title">Reels</h2>
+    <p class="reels-subline" id="cms-reels-subline">
+      A selection of reels from
+      <a href="https://www.instagram.com/_ludovica_dagna/" target="_blank" rel="noopener noreferrer">@_ludovica_dagna</a>
+      &ensp;&mdash;&ensp; exhibitions, projects, and artistic collaborations.
+    </p>
+  </div>
+
+  <div class="reels-grid" id="reels-grid">
+    <!-- Populated from content/reels.json -->
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════
+     CONTACT
+══════════════════════════ -->
+<section id="contact" aria-label="Contact">
+  <div class="contact-inner">
+    <p class="section-label" id="cms-contact-label">Get in Touch</p>
+    <h2 class="section-title" id="cms-contact-title">Let's Work Together</h2>
+
+    <div class="contact-grid">
+
+      <div class="contact-info reveal reveal-d1">
+        <p id="cms-contact-intro">For exhibition collaborations, curatorial consultancy, artist management, or digital curation projects, reach out through the form or connect directly on Instagram.</p>
+        <p class="lead" id="cms-contact-sub">Every project begins with a conversation.</p>
+        <div class="contact-links">
+          <a href="https://wa.me/393486011153" target="_blank" rel="noopener noreferrer" aria-label="Write on WhatsApp">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            +39 348 601 1153
+          </a>
+          <a id="cms-contact-ig" href="https://www.instagram.com/_ludovica_dagna" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            @_ludovica_dagna
+          </a>
+        </div>
+      </div>
+
+      <form
+        class="contact-form reveal reveal-d2"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        name="contact"
+        method="POST"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none" aria-hidden="true">
+          <label>Don't fill this out: <input name="bot-field" autocomplete="off"></label>
+        </p>
+        <div class="form-row">
+          <div>
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div>
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div>
+          <label for="cf-subject">Type of Inquiry</label>
+          <select id="cf-subject" name="subject">
+            <option value="exhibition">Exhibition Collaboration</option>
+            <option value="curatorial">Curatorial Consultancy</option>
+            <option value="management">Artist Management</option>
+            <option value="digital">Digital Curation / Website</option>
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+        <div>
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" required placeholder="Describe your project, idea, or inquiry…"></textarea>
+        </div>
+        <button type="submit" id="form-submit">Send Message</button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     FOOTER
+══════════════════════════ -->
+<footer class="footer-wrap">
+  <div class="footer">
+    <img src="logo.png" alt="LD Digital Atelier" class="footer-logo">
+    <span>&copy; 2026 Ludovica Benedetta Dagna. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="https://www.instagram.com/_ludovica_dagna" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://wa.me/393486011153" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════
+     WHATSAPP FLOATING BUTTON
+══════════════════════════ -->
+<a
+  class="wa-float"
+  href="https://wa.me/393486011153"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Scrivimi su WhatsApp"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════
+     COOKIE BANNER
+══════════════════════════ -->
+<div id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(26,19,21,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1.1rem clamp(1.25rem,5vw,3rem)">
+  <div style="max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
+    <p style="font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:300;line-height:1.65;margin:0;flex:1;min-width:260px;color:rgba(250,247,246,.85)">
+      This site uses only strictly necessary cookies — no tracking, no advertising.
+      <a href="cookie-policy.html" style="color:#F0C4D0;text-decoration:underline;margin-left:.3rem">Cookie Policy</a>
+      <a href="privacy-policy.html" style="color:#F0C4D0;text-decoration:underline;margin-left:.75rem">Privacy Policy</a>
+    </p>
+    <button
+      onclick="acceptCookies()"
+      style="flex-shrink:0;background:#9B2355;color:#fff;border:none;font-family:'Raleway',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;transition:background .3s;white-space:nowrap;min-height:44px"
+      onmouseover="this.style.background='#6E1A3A'"
+      onmouseout="this.style.background='#9B2355'"
+    >Accept</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+     SCRIPTS
+══════════════════════════ -->
+<script>
+/* ── Name reveal trigger ── */
+(function(){
+  /* Small delay so browser has painted and CSS is ready */
+  var h1 = document.getElementById('lax-h1');
+  if(h1) setTimeout(function(){ h1.classList.add('name-animate'); }, 80);
+})();
+
+/* ── Nav scroll ── */
+(function(){
+  var nav = document.getElementById('nav');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+})();
+
+/* ── Mobile menu ── */
+(function(){
+  var hb  = document.getElementById('hamburger');
+  var mm  = document.getElementById('mobileMenu');
+  var mc  = document.getElementById('mobileClose');
+  var focusable = 'a, button';
+
+  function openMenu(){
+    hb.classList.add('active');
+    mm.classList.add('open');
+    hb.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu(){
+    hb.classList.remove('active');
+    mm.classList.remove('open');
+    hb.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+
+  window.closeMobile = closeMobileMenu;
+  hb.addEventListener('click', openMenu);
+  mc.addEventListener('click', closeMobileMenu);
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && mm.classList.contains('open')) closeMobileMenu();
+  });
+})();
+
+/* ── Scroll reveal ── */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ── lax.js — disabled on mobile (<768px) and prefers-reduced-motion ── */
+(function(){
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.innerWidth < 768;
+  if(prefersReduced || typeof lax === 'undefined') return;
+
+  window.addEventListener('load', function(){
+    lax.init();
+    lax.addDriver('scrollY', function(){ return window.scrollY; });
+
+    /* ───────────────────────────────────────────
+       HERO — depth parallax sui tre livelli del nome
+       Ogni riga si muove a velocità diversa creando
+       senso di profondità mentre si scrolla via
+    ─────────────────────────────────────────── */
+    lax.addElements('#lax-h1 .name-line:nth-child(1)', {
+      scrollY:{ translateY:[[0,600],[0,-100]] }
+    });
+    lax.addElements('#lax-h1 .name-line:nth-child(2)', {
+      scrollY:{ translateY:[[0,600],[0,-65]] }
+    });
+    lax.addElements('#lax-h1 .name-line:nth-child(3)', {
+      scrollY:{ translateY:[[0,600],[0,-35]] }
+    });
+
+    /* Hero overline — slideX da sinistra mentre scrolla su */
+    lax.addElements('#cms-hero-overline', {
+      scrollY:{
+        translateX:[[0,500],[0,-60]],
+        opacity:[[0,400],[1,0]]
+      }
+    });
+
+    /* Hero subtitle — translateY + fade out */
+    lax.addElements('#lax-sub', {
+      scrollY:{
+        translateY:[[0,600],[0,-50]],
+        opacity:[[0,500],[1,0]]
+      }
+    });
+
+    /* Hero CTA — scaleIn con easeOutBack: pop elegante */
+    lax.addElements('.hero-cta-wrap', {
+      scrollY:{
+        opacity:[[0,500],[1,0]],
+        translateY:[[0,500],[0,-30]]
+      }
+    });
+
+    /* Background blobs — parallax profondità */
+    lax.addElements('#lax-blob-1', {
+      scrollY:{
+        translateY:[[0,900],[0,-230]],
+        scale:[[0,900],[1,1.18]]
+      }
+    });
+    lax.addElements('#lax-blob-2', {
+      scrollY:{ translateY:[[0,900],[0,-130]] }
+    });
+    lax.addElements('#lax-blob-3', {
+      scrollY:{ translateY:[[0,900],[0,-80]] }
+    });
+
+    /* Monogramma LD di sfondo — sale + ruota + svanisce */
+    lax.addElements('#lax-monogram', {
+      scrollY:{
+        translateY:[[0,700],[0,-280]],
+        rotate:[[0,700],[0,-6]],
+        opacity:[[0,300],[1,0]]
+      }
+    });
+
+    /* ───────────────────────────────────────────
+       ABOUT — scaleIn · scaleOut · scaleInOut
+
+       Ritratto:   scaleInOut — cresce entrando, si
+                   rimpicciolisce uscendo (0.75→1→0.75)
+                   + blurIn per messa a fuoco fotografica
+
+       Cornice:    scaleIn da destra — entra crescendo
+
+       Label:      scaleIn sottile + slideX editoriale
+
+       Titolo h2:  scaleInOut — il pezzo più importante
+                   della sezione pulsa al centro schermo
+
+       Paragrafi:  scaleIn staggered (0.9→1) — discreto,
+                   come pagine di un libro che si aprono
+
+       Stats:      scaleIn con easeOutBounce — i simboli
+                   balzano nel loro pieno formato
+    ─────────────────────────────────────────── */
+
+    /* Ritratto: scaleInOut (0.75 → 1 → 0.75) + blurIn */
+    lax.addElements('#lax-portrait', {
+      scrollY:{
+        scale:[
+          ['elInY+elHeight','elCenterY','elOutY-elHeight'],
+          [0.75, 1, 0.75],
+          {easing:'easeInOutCubic'}
+        ],
+        blur:[
+          ['elInY+elHeight','elCenterY'],
+          [6, 0]
+        ],
+        opacity:[
+          ['elInY+elHeight','elInY+elHeight+150'],
+          [0, 1]
+        ]
+      }
+    });
+
+    /* Cornice decorativa: scaleIn da 0 — cresce entrando */
+    lax.addElements('.about-portrait-deco', {
+      scrollY:{
+        scale:[
+          ['elInY+elHeight','elCenterY'],
+          [0, 1],
+          {easing:'easeOutBack'}
+        ],
+        opacity:[['elInY+elHeight','elInY+elHeight+200'],[0,1]]
+      }
+    });
+
+    /* Label "The Curator": scaleIn leggero + slideX */
+    lax.addElements('#cms-about-label', {
+      scrollY:{
+        scale:[
+          ['elInY+elHeight','elCenterY'],
+          [0.7, 1],
+          {easing:'easeOutQuad'}
+        ],
+        translateX:[['elInY+elHeight','elCenterY'],[-40,0]],
+        opacity:[['elInY+elHeight','elInY+elHeight+180'],[0,1]]
+      }
+    });
+
+    /* Titolo h2: scaleInOut — il cuore della sezione
+       scala da 0.82 → 1 → 0.82 mentre attraversa lo schermo */
+    lax.addElements('#cms-about-title', {
+      scrollY:{
+        scale:[
+          ['elInY+elHeight','elCenterY-50','elCenterY','elCenterY+50','elOutY-elHeight'],
+          [0.82, 1, 1, 1, 0.82],
+          {easing:'easeInOutQuart'}
+        ],
+        opacity:[
+          ['elInY+elHeight','elCenterY-100','elCenterY+100','elOutY-elHeight'],
+          [0, 1, 1, 0]
+        ]
+      }
+    });
+
+    /* Paragrafi: scaleIn staggered (0.92→1) — discreto */
+    lax.addElements('#cms-about-p1', {
+      scrollY:{
+        scale:[['elInY+elHeight','elCenterY'],[0.92,1],{easing:'easeOutQuad'}],
+        translateY:[['elInY+elHeight','elCenterY'],[20,0]],
+        opacity:[['elInY+elHeight','elInY+elHeight+200'],[0,1]]
+      }
+    });
+    lax.addElements('#cms-about-p2', {
+      scrollY:{
+        scale:[['elInY+elHeight','elCenterY'],[0.92,1],{easing:'easeOutQuad'}],
+        translateY:[['elInY+elHeight','elCenterY'],[25,0]],
+        opacity:[['elInY+elHeight','elInY+elHeight+200'],[0,1]]
+      }
+    });
+    lax.addElements('#cms-about-p3', {
+      scrollY:{
+        scale:[['elInY+elHeight','elCenterY'],[0.92,1],{easing:'easeOutQuad'}],
+        translateY:[['elInY+elHeight','elCenterY'],[30,0]],
+        opacity:[['elInY+elHeight','elInY+elHeight+200'],[0,1]]
+      }
+    });
+    lax.addElements('#cms-about-p4', {
+      scrollY:{
+        scale:[['elInY+elHeight','elCenterY'],[0.92,1],{easing:'easeOutQuad'}],
+        translateY:[['elInY+elHeight','elCenterY'],[35,0]],
+        opacity:[['elInY+elHeight','elInY+elHeight+200'],[0,1]]
+      }
+    });
+
+    /* Stats: scaleIn con easeOutBounce — i simboli rimbalzano */
+    lax.addElements('.about-stat-num', {
+      scrollY:{
+        scale:[['elInY','elCenterY'],[0,1],{easing:'easeOutBounce'}],
+        opacity:[['elInY','elInY+150'],[0,1]]
+      }
+    });
+    lax.addElements('.about-stat-lbl', {
+      scrollY:{
+        scale:[['elInY','elCenterY'],[0.7,1],{easing:'easeOutQuad'}],
+        opacity:[['elInY','elCenterY'],[0,1]],
+        translateY:[['elInY','elCenterY'],[10,0]]
+      }
+    });
+
+    /* ───────────────────────────────────────────
+       SERVICES — blurIn sul titolo + lift sulle card
+    ─────────────────────────────────────────── */
+
+    /* Titolo sezione — blurIn: appare come messa a fuoco */
+    lax.addElements('#cms-services-title', {
+      scrollY:{
+        blur:[['elInY','elCenterY'],[8,0],{easing:'easeOutQuint'}],
+        opacity:[['elInY','elInY+200'],[0,1]],
+        translateY:[['elInY','elCenterY'],[20,0]]
+      }
+    });
+    lax.addElements('#cms-services-label', {
+      scrollY:{
+        translateX:[['elInY','elCenterY'],[-30,0],{easing:'easeOutQuad'}],
+        opacity:[['elInY','elInY+150'],[0,1]]
+      }
+    });
+
+    /* Card servizi — staggered translateY, alternanza sinistra/destra
+       card 1 e 3 da sinistra, 2 e 4 da destra */
+    lax.addElements('#lax-card-1', {
+      scrollY:{
+        translateY:[['elInY - 80','elCenterY'],[55,0],{easing:'easeOutCubic'}],
+        translateX:[['elInY - 80','elCenterY'],[-25,0]],
+        opacity:[['elInY - 80','elInY+100'],[0,1]]
+      }
+    });
+    lax.addElements('#lax-card-2', {
+      scrollY:{
+        translateY:[['elInY - 80','elCenterY'],[75,0],{easing:'easeOutCubic'}],
+        translateX:[['elInY - 80','elCenterY'],[25,0]],
+        opacity:[['elInY - 80','elInY+100'],[0,1]]
+      }
+    });
+    lax.addElements('#lax-card-3', {
+      scrollY:{
+        translateY:[['elInY - 80','elCenterY'],[55,0],{easing:'easeOutCubic'}],
+        translateX:[['elInY - 80','elCenterY'],[-25,0]],
+        opacity:[['elInY - 80','elInY+100'],[0,1]]
+      }
+    });
+    lax.addElements('#lax-card-4', {
+      scrollY:{
+        translateY:[['elInY - 80','elCenterY'],[75,0],{easing:'easeOutCubic'}],
+        translateX:[['elInY - 80','elCenterY'],[25,0]],
+        opacity:[['elInY - 80','elInY+100'],[0,1]]
+      }
+    });
+
+    /* ───────────────────────────────────────────
+       PHILOSOPHY — blurInOut sulla citazione
+       È la scelta più cinematografica: il testo
+       è sfocato ai bordi del viewport e diventa
+       perfettamente nitido solo al centro — come
+       un pensiero che prende forma.
+    ─────────────────────────────────────────── */
+
+    /* Sfondo "vision" — drift orizzontale + leggero scale */
+    lax.addElements('#lax-phil-bg', {
+      scrollY:{
+        translateX:[['elInY','elOutY'],[-40,40]],
+        scale:[['elInY','elCenterY','elOutY'],[0.96,1.02,0.96]]
+      }
+    });
+
+    /* Citazione — blurInOut: nasce sfocata, diventa nitida
+       al centro schermo, si ri-sfoca uscendo */
+    lax.addElements('.philosophy-quote', {
+      scrollY:{
+        blur:[
+          ['elInY+elHeight','elCenterY-80','elCenterY','elCenterY+80','elOutY-elHeight'],
+          [10, 0, 0, 0, 10],
+          {easing:'easeInOutQuint'}
+        ],
+        opacity:[
+          ['elInY+elHeight','elCenterY-120','elCenterY+120','elOutY-elHeight'],
+          [0, 1, 1, 0]
+        ]
+      }
+    });
+
+    /* Firma citazione — fadeIn ritardato + slideX
+       Appare dopo il testo, come una vera firma */
+    lax.addElements('.philosophy-cite', {
+      scrollY:{
+        translateX:[['elCenterY - 200','elCenterY'],[40,0],{easing:'easeOutQuad'}],
+        opacity:[['elCenterY - 200','elCenterY - 50'],[0,1]]
+      }
+    });
+
+    /* ───────────────────────────────────────────
+       CONTACT — slideX + fadeIn coerenti con About
+    ─────────────────────────────────────────── */
+    lax.addElements('#cms-contact-label', {
+      scrollY:{
+        translateX:[['elInY','elCenterY'],[-30,0],{easing:'easeOutQuad'}],
+        opacity:[['elInY','elInY+180'],[0,1]]
+      }
+    });
+    lax.addElements('#cms-contact-title', {
+      scrollY:{
+        skewX:[['elInY','elCenterY'],[2,0],{easing:'easeOutCubic'}],
+        translateX:[['elInY','elCenterY'],[-20,0]],
+        opacity:[['elInY','elInY+200'],[0,1]]
+      }
+    });
+
+    /* Footer logo — no spin */
+
+  });
+})();
+
+/* ── Cookie banner ── */
+(function(){
+  if(!localStorage.getItem('cookieConsent')){
+    document.getElementById('cookieBanner').style.display = 'block';
+  }
+})();
+function acceptCookies(){
+  localStorage.setItem('cookieConsent','accepted');
+  var b = document.getElementById('cookieBanner');
+  b.style.transition = 'opacity .4s';
+  b.style.opacity = '0';
+  setTimeout(function(){ b.style.display = 'none'; }, 400);
+}
+
+/* ── Contact form — Netlify AJAX ── */
+(function(){
+  var form = document.querySelector('form[name="contact"]');
+  if(!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = document.getElementById('form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(res){
+      if(res.ok){
+        form.innerHTML = [
+          '<div style="padding:3rem 0;text-align:center">',
+          '<p style="font-family:var(--display);font-size:2.2rem;font-weight:300;',
+          'font-style:italic;margin-bottom:.75rem;color:var(--accent)">Thank you.</p>',
+          '<p style="color:var(--text-l);font-size:.9rem;line-height:1.8">',
+          'Your message has been received.<br>Ludovica will be in touch soon.</p>',
+          '</div>'
+        ].join('');
+      } else { throw new Error('Network error'); }
+    }).catch(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      alert('Something went wrong. Please try again or reach out via Instagram.');
+    });
+  });
+})();
+</script>
+
+<!-- ══════════════════════════
+     CMS CONTENT LOADER
+     Reads JSON files from /content/ and
+     injects text into the page at runtime.
+     Falls back to hardcoded HTML if fetch fails.
+══════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  function setText(id, value){
+    var el = document.getElementById(id);
+    if(el && value !== undefined && value !== null) el.textContent = value;
+  }
+  function setHTML(id, value){
+    var el = document.getElementById(id);
+    if(el && value !== undefined && value !== null) el.innerHTML = value;
+  }
+  function setAttr(id, attr, value){
+    var el = document.getElementById(id);
+    if(el && value) el.setAttribute(attr, value);
+  }
+
+  /* ── HERO ── */
+  fetch('content/hero.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      setText('cms-hero-overline', d.overline);
+      setText('cms-hero-name1',   d.name_1);
+      setText('cms-hero-name2',   d.name_2);
+      setText('cms-hero-name3',   d.name_3);
+      setText('cms-hero-role',    d.role);
+      setText('cms-hero-cta-primary',   d.cta_primary);
+      setText('cms-hero-cta-secondary', d.cta_secondary);
+    })
+    .catch(function(){});
+
+  /* ── ABOUT ── */
+  fetch('content/about.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      setText('cms-about-label', d.label);
+
+      /* Title: keep the <br> + <em> structure */
+      var titleEl = document.getElementById('cms-about-title');
+      if(titleEl && d.title){
+        /* Replace last word before end with em-wrapped version */
+        var parts = d.title.split(' of ');
+        if(parts.length === 2){
+          titleEl.innerHTML = parts[0] + ' of<br><em>' + parts[1] + '</em>';
+        } else {
+          titleEl.textContent = d.title;
+        }
+      }
+
+      setText('cms-about-p1', d.paragraph_lead);
+      setText('cms-about-p2', d.paragraph_2);
+      setText('cms-about-p3', d.paragraph_3);
+      setText('cms-about-p4', d.paragraph_4);
+
+      /* Stats */
+      if(d.stats && d.stats.length){
+        var statsEl = document.getElementById('cms-about-stats');
+        if(statsEl){
+          statsEl.innerHTML = d.stats.map(function(s){
+            return '<div>'
+              + '<div class="about-stat-num">' + s.num + '</div>'
+              + '<div class="about-stat-lbl">' + s.label + '</div>'
+              + '</div>';
+          }).join('');
+        }
+      }
+    })
+    .catch(function(){});
+
+  /* ── TAGS ── */
+  fetch('content/tags.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var el = document.getElementById('cms-tags-list');
+      if(el && d.tags && d.tags.length){
+        el.innerHTML = d.tags.map(function(t){
+          return '<span class="tag" role="listitem">' + t + '</span>';
+        }).join('');
+      }
+    })
+    .catch(function(){});
+
+  /* ── SERVICES ── */
+  fetch('content/services.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      setText('cms-services-label', d.label);
+      setText('cms-services-title', d.title);
+
+      var grid = document.getElementById('cms-services-grid');
+      if(grid && d.cards && d.cards.length){
+        var delays = ['reveal-d1','reveal-d2','reveal-d3','reveal-d4'];
+        grid.innerHTML = d.cards.map(function(c, i){
+          var laxId = 'lax-card-' + (i + 1);
+          var delay = delays[i] || '';
+          return '<article class="service-card reveal ' + delay + '" id="' + laxId + '">'
+            + '<div class="service-num" aria-hidden="true">' + c.num + '</div>'
+            + '<h3>' + c.title + '</h3>'
+            + '<p>' + c.description + '</p>'
+            + '<span class="service-tag">' + c.tag + '</span>'
+            + '</article>';
+        }).join('');
+
+        /* Re-observe new elements for reveal */
+        grid.querySelectorAll('.reveal').forEach(function(el){
+          revealObserver && revealObserver.observe(el);
+        });
+
+        /* Re-register lax on new cards (desktop only) */
+        if(typeof lax !== 'undefined' && window.innerWidth >= 768){
+          var offsets = [55,75,55,75];
+          d.cards.forEach(function(_, i){
+            var sel = '#lax-card-' + (i+1);
+            var off = offsets[i] || 55;
+            try {
+              lax.addElements(sel, {
+                scrollY:{ translateY:[['elInY - 80','elCenterY'],[off,0]] }
+              });
+            } catch(e){}
+          });
+        }
+      }
+    })
+    .catch(function(){});
+
+  /* ── PHILOSOPHY ── */
+  fetch('content/philosophy.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      setText('cms-phil-label', d.label);
+      setText('cms-phil-quote', d.quote);
+      setText('cms-phil-cite',  d.cite);
+    })
+    .catch(function(){});
+
+  /* ── CONTACT ── */
+  fetch('content/contact.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      setText('cms-contact-label', d.label);
+      setText('cms-contact-title', d.title);
+      setText('cms-contact-intro', d.intro);
+      setText('cms-contact-sub',   d.sub);
+      if(d.instagram){
+        var igEl = document.getElementById('cms-contact-ig');
+        if(igEl){
+          igEl.href = 'https://www.instagram.com/' + d.instagram;
+          /* Update visible handle text (last text node) */
+          igEl.childNodes.forEach(function(node){
+            if(node.nodeType === 3 && node.textContent.trim()){
+              node.textContent = '\n            @' + d.instagram + '\n          ';
+            }
+          });
+        }
+      }
+    })
+    .catch(function(){});
+
+  /* ── REELS ── */
+  fetch('content/reels.json')
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      // Update header texts
+      var labelEl = document.getElementById('cms-reels-label');
+      var titleEl = document.getElementById('cms-reels-title');
+      var subEl   = document.getElementById('cms-reels-subline');
+      if(labelEl && d.label) labelEl.textContent = d.label;
+      if(titleEl && d.label) titleEl.textContent = d.label;
+      if(subEl   && d.subline){
+        // Keep the Instagram link, only update surrounding text
+        subEl.childNodes.forEach(function(n){
+          if(n.nodeType === 3) n.textContent = '';
+        });
+        subEl.textContent = d.subline;
+      }
+
+      // Build embed blockquotes
+      var grid = document.getElementById('reels-grid');
+      if(!grid || !d.reels || !d.reels.length) return;
+
+      grid.innerHTML = d.reels.map(function(r){
+        return '<blockquote class="instagram-media"'
+          + ' data-instgrm-permalink="' + r.url + '"'
+          + ' data-instgrm-version="14">'
+          + '</blockquote>';
+      }).join('\n');
+
+      // Load or re-trigger Instagram embed script
+      if(window.instgrm && window.instgrm.Embeds){
+        window.instgrm.Embeds.process();
+      } else {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.instagram.com/embed.js';
+        document.body.appendChild(s);
+      }
+    })
+    .catch(function(){
+      // Fallback: load embed.js anyway for any static blockquotes
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.instagram.com/embed.js';
+      document.body.appendChild(s);
+    });
+
+  /* Keep reference to reveal observer so services can reuse it */
+  window.revealObserver = null;
+  document.addEventListener('DOMContentLoaded', function(){
+    window.revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          window.revealObserver.unobserve(e.target);
+        }
+      });
+    },{threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+  });
+})();
+</script>
+
+<!-- Netlify Identity: redirect to admin after login -->
+<script>
+
+/* ── Collaborations belt — duplicate items for seamless CSS loop ── */
+(function(){
+  var belt = document.getElementById('collabBelt');
+  if(!belt) return;
+  // Clone all direct children and append — CSS animates -50% so we need 2x content
+  var items = Array.from(belt.children);
+  items.forEach(function(item){
+    var clone = item.cloneNode(true);
+    clone.setAttribute('aria-hidden','true');
+    clone.setAttribute('tabindex','-1');
+    belt.appendChild(clone);
+  });
+})();
+
+if(window.netlifyIdentity){
+  window.netlifyIdentity.on('init', function(user){
+    if(!user){
+      window.netlifyIdentity.on('login', function(){
+        document.location.href = '/admin/';
+      });
+    }
+  });
+}
+</script>
+
+</body>
+</html>

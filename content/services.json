@@ -1,0 +1,30 @@
+{
+  "label": "What I Do",
+  "title": "Services",
+  "cards": [
+    {
+      "num": "01",
+      "title": "Curatorial Planning",
+      "description": "Concept definition, thematic research, artist selection, and the development of coherent exhibition narratives. Each project is approached with critical depth, ensuring an articulate artistic vision from inception to opening night.",
+      "tag": "Concept · Research · Selection"
+    },
+    {
+      "num": "02",
+      "title": "Exhibition Production",
+      "description": "Full organizational oversight of exhibition logistics, installation planning, and production management. From venue coordination to technical requirements, every operational detail is handled with precision and professional care.",
+      "tag": "Logistics · Installation · Production"
+    },
+    {
+      "num": "03",
+      "title": "Art Management",
+      "description": "Strategic support for artists in the development, positioning, and communication of their professional practice — helping build a coherent public profile, define artistic identity, and navigate the contemporary art world with confidence.",
+      "tag": "Positioning · Communication · Strategy"
+    },
+    {
+      "num": "04",
+      "title": "Digital Curation",
+      "description": "International collaborations connecting contemporary art with digital strategy and online representation. Creation of bespoke artist websites that translate each artistic vision into a refined, coherent, and lasting digital presence.",
+      "tag": "Digital · Website · Online Presence"
+    }
+  ]
+}

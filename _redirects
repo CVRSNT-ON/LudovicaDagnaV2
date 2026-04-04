@@ -1,0 +1,3 @@
+# Redirect HTTP to HTTPS (handled by Netlify automatically)
+# Fallback to index for SPA-like behaviour (not needed here, single page)
+/* /index.html 200

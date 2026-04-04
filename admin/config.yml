@@ -1,0 +1,118 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Le modifiche vengono salvate come bozze.
+# Clicca "Publish Changes" per deployare tutto in una volta.
+publish_mode: editorial_workflow
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+
+locale: 'en'
+
+collections:
+
+  # ──────────────────────────────────────────────
+  # SITE CONTENT — single file for all page texts
+  # ──────────────────────────────────────────────
+  - name: "site_content"
+    label: "Site Content"
+    files:
+
+      # ── HERO ──
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/hero.json"
+        fields:
+          - { label: "Overline (small text above name)", name: "overline", widget: "string", default: "Art Curator · Art Manager · Project Coordinator" }
+          - { label: "Name Line 1", name: "name_1", widget: "string", default: "Ludovica" }
+          - { label: "Name Line 2 (italic)", name: "name_2", widget: "string", default: "Benedetta" }
+          - { label: "Name Line 3", name: "name_3", widget: "string", default: "Dagna" }
+          - { label: "Role Line (below name)", name: "role", widget: "string", default: "Contemporary Art — Exhibition Curatorship — Cultural Mediation" }
+          - { label: "Primary CTA Button Text", name: "cta_primary", widget: "string", default: "Get in Touch" }
+          - { label: "Secondary CTA Text", name: "cta_secondary", widget: "string", default: "Discover More →" }
+
+      # ── ABOUT ──
+      - name: "about"
+        label: "About Section"
+        file: "content/about.json"
+        fields:
+          - { label: "Section Label", name: "label", widget: "string", default: "The Curator" }
+          - { label: "Section Title", name: "title", widget: "string", default: "Curatorship as a Form of Mediation" }
+          - { label: "Lead Paragraph (italic, displayed first)", name: "paragraph_lead", widget: "text" }
+          - { label: "Paragraph 2", name: "paragraph_2", widget: "text" }
+          - { label: "Paragraph 3", name: "paragraph_3", widget: "text" }
+          - { label: "Paragraph 4", name: "paragraph_4", widget: "text" }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            max: 3
+            fields:
+              - { label: "Number / Symbol", name: "num", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+
+      # ── SERVICES ──
+      - name: "services"
+        label: "Services Section"
+        file: "content/services.json"
+        fields:
+          - { label: "Section Label", name: "label", widget: "string", default: "What I Do" }
+          - { label: "Section Title", name: "title", widget: "string", default: "Services" }
+          - label: "Service Cards"
+            name: "cards"
+            widget: "list"
+            min: 1
+            max: 6
+            fields:
+              - { label: "Number (e.g. 01)", name: "num", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Tag Line (small bottom label)", name: "tag", widget: "string" }
+
+      # ── PHILOSOPHY ──
+      - name: "philosophy"
+        label: "Philosophy / Quote Section"
+        file: "content/philosophy.json"
+        fields:
+          - { label: "Section Label", name: "label", widget: "string", default: "Philosophy" }
+          - { label: "Quote Text", name: "quote", widget: "text" }
+          - { label: "Citation Name", name: "cite", widget: "string", default: "— Ludovica Benedetta Dagna" }
+
+      # ── CONTACT ──
+      - name: "contact"
+        label: "Contact Section"
+        file: "content/contact.json"
+        fields:
+          - { label: "Section Label", name: "label", widget: "string", default: "Get in Touch" }
+          - { label: "Section Title", name: "title", widget: "string", default: "Let's Work Together" }
+          - { label: "Intro Paragraph", name: "intro", widget: "text" }
+          - { label: "Sub Paragraph (italic)", name: "sub", widget: "string", default: "Every project begins with a conversation." }
+          - { label: "Instagram Handle", name: "instagram", widget: "string", default: "_ludovica_dagna" }
+
+      # ── TAGS ──
+      - name: "tags"
+        label: "Areas of Practice Tags"
+        file: "content/tags.json"
+        fields:
+          - label: "Tags"
+            name: "tags"
+            widget: "list"
+            field: { label: "Tag", name: "tag", widget: "string" }
+
+      # ── REELS ──
+      - name: "reels"
+        label: "Reels (Instagram)"
+        file: "content/reels.json"
+        fields:
+          - { label: "Section Label", name: "label", widget: "string", default: "Reels" }
+          - { label: "Subline text (below title)", name: "subline", widget: "string" }
+          - label: "Reel List"
+            name: "reels"
+            widget: "list"
+            min: 1
+            max: 12
+            fields:
+              - { label: "Instagram Reel URL", name: "url", widget: "string", hint: "Es: https://www.instagram.com/reel/XXXXXXX/" }
+              - { label: "Optional caption (not displayed, just for reference)", name: "caption", widget: "string", required: false }

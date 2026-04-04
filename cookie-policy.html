@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, follow">
+<title>Cookie Policy — Ludovica Benedetta Dagna</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAF7F6;--text:#1A1315;--text-l:#8A7272;--text-m:#5C4848;
+  --accent:#9B2355;--border:#EDD5DC;--card:#FFFAFB;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Raleway',-apple-system,sans-serif;
+  --max-w:780px;--g:clamp(1.25rem,5vw,3rem)
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;font-weight:300;-webkit-font-smoothing:antialiased}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 var(--g);display:flex;justify-content:space-between;align-items:center;background:rgba(250,247,246,.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--border)}
+.nav-logo img{height:44px;width:44px;object-fit:contain}
+.nav-back{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--text-l);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s;min-height:44px}
+.nav-back:hover{color:var(--accent)}
+
+.legal-wrap{max-width:var(--max-w);margin:0 auto;padding:calc(64px + 4rem) var(--g) 5rem}
+
+.legal-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.legal-eyebrow{font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.legal-title{font-family:var(--display);font-weight:300;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.05;margin-bottom:.75rem}
+.legal-title em{font-style:italic;color:var(--accent)}
+.legal-date{font-size:.78rem;color:var(--text-l);font-weight:400}
+
+.legal-section{margin-bottom:2.5rem}
+h2{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--text);margin-bottom:.85rem;padding-top:.5rem}
+h3{font-family:var(--display);font-weight:400;font-style:italic;font-size:1.1rem;color:var(--text-m);margin-bottom:.6rem;margin-top:1.25rem}
+p{font-size:.92rem;color:var(--text-l);line-height:1.9;margin-bottom:1rem}
+ul,ol{margin:.5rem 0 1rem 1.4rem}
+li{font-size:.92rem;color:var(--text-l);line-height:1.8;margin-bottom:.35rem}
+a{color:var(--accent);text-decoration:none;transition:color .3s}
+a:hover{color:#6E1A3A}
+strong{font-weight:600;color:var(--text-m)}
+
+/* Summary box at top */
+.summary-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.summary-box p{margin-bottom:0;font-size:.88rem}
+
+/* Cookie table */
+.cookie-table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.85rem}
+.cookie-table th{text-align:left;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);padding:.75rem 1rem;border-bottom:2px solid var(--border);background:var(--card)}
+.cookie-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);color:var(--text-l);vertical-align:top;line-height:1.6}
+.cookie-table tr:last-child td{border-bottom:none}
+.cookie-table td:first-child{font-weight:500;color:var(--text-m);white-space:nowrap}
+
+/* Badge */
+.badge{display:inline-block;padding:.2rem .55rem;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px}
+.badge-green{background:#E8F5E9;color:#2E7D32}
+.badge-amber{background:#FFF8E1;color:#F57F17}
+
+/* Consent toggle area */
+.consent-area{background:var(--card);border:1px solid var(--border);padding:1.5rem;margin:1.5rem 0}
+.consent-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.consent-row:last-child{border-bottom:none;padding-bottom:0}
+.consent-label{font-size:.85rem;color:var(--text-m);font-weight:500}
+.consent-desc{font-size:.78rem;color:var(--text-l);margin-top:.2rem}
+.consent-status{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.status-always{color:#2E7D32}
+.status-none{color:var(--accent)}
+
+.legal-footer{border-top:1px solid var(--border);padding:1.75rem var(--g);max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;font-size:.72rem;color:var(--text-l)}
+.legal-footer a{color:var(--text-l);text-decoration:none;transition:color .3s}
+.legal-footer a:hover{color:var(--accent)}
+
+@media(max-width:600px){
+  .cookie-table th:nth-child(3),.cookie-table td:nth-child(3){display:none}
+  .legal-footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" aria-label="Back to home">
+    <img src="logo.png" alt="LD Digital Atelier">
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<main class="legal-wrap">
+
+  <header class="legal-header">
+    <p class="legal-eyebrow">Legal</p>
+    <h1 class="legal-title">Cookie <em>Policy</em></h1>
+    <p class="legal-date">Last updated: March 2026</p>
+  </header>
+
+  <div class="legal-section">
+    <div class="summary-box">
+      <p><strong>Short version:</strong> This Site uses only strictly necessary technical cookies — no advertising, no tracking, no profiling. We do not sell or share cookie data with third parties for commercial purposes.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>1. What Are Cookies</h2>
+    <p>Cookies are small text files stored on your device (computer, tablet, or smartphone) when you visit a website. They are widely used to make websites work correctly, remember your preferences, and provide information to site owners.</p>
+    <p>This Cookie Policy explains what cookies are used on <strong>ludovicadagna.com</strong>, why, and how you can control them — in compliance with EU Directive 2009/136/EC (the "Cookie Law"), the GDPR (Regulation 2016/679), and the Italian Data Protection Authority's guidelines.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>2. Cookies Used on This Site</h2>
+    <p>This Site uses a minimal set of cookies, detailed below:</p>
+
+    <table class="cookie-table" aria-label="Cookies used on this site">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Provider</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>cookieConsent</code></td>
+          <td><span class="badge badge-green">Technical</span></td>
+          <td>This Site</td>
+          <td>Stores your cookie consent choice so the banner is not shown again</td>
+          <td>1 year</td>
+        </tr>
+        <tr>
+          <td>Session / cache</td>
+          <td><span class="badge badge-green">Technical</span></td>
+          <td>Netlify</td>
+          <td>Standard HTTP session and caching for website delivery</td>
+          <td>Session</td>
+        </tr>
+        <tr>
+          <td>_gads, _ga, etc.</td>
+          <td><span class="badge badge-amber">Not used</span></td>
+          <td>—</td>
+          <td>Advertising and analytics cookies are <strong>not</strong> used on this Site</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legal-section">
+    <h2>3. Categories of Cookies</h2>
+
+    <h3>Strictly Necessary Cookies</h3>
+    <p>These cookies are essential for the website to function. They enable core features such as page navigation and form submission. Without these cookies, the Site cannot function properly. <strong>These do not require your consent</strong> under EU law.</p>
+
+    <h3>Analytics Cookies</h3>
+    <p>This Site does <strong>not</strong> use analytics cookies (e.g. Google Analytics, Matomo, Hotjar). No data about your browsing behaviour is collected for statistical purposes.</p>
+
+    <h3>Profiling / Marketing Cookies</h3>
+    <p>This Site does <strong>not</strong> use profiling or marketing cookies. No targeted advertising or retargeting is carried out.</p>
+
+    <h3>Third-Party Cookies</h3>
+    <p>Some elements loaded from third-party servers (Google Fonts, jsDelivr CDN) may result in those servers placing technical cookies or logging your IP address. This is standard browser behaviour and not controlled by us. Refer to the privacy policies of those providers:</p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> (Google Fonts)</li>
+      <li><a href="https://www.jsdelivr.com/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">jsDelivr Privacy Policy</a></li>
+      <li><a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Netlify Privacy Policy</a></li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <h2>4. Your Consent &amp; Preferences</h2>
+    <p>Because this Site uses only strictly necessary cookies, your explicit consent is not required under GDPR. We display a minimal notice for transparency.</p>
+
+    <div class="consent-area" aria-label="Cookie preferences summary">
+      <div class="consent-row">
+        <div>
+          <div class="consent-label">Strictly Necessary</div>
+          <div class="consent-desc">Required for the site to function. Cannot be disabled.</div>
+        </div>
+        <span class="consent-status status-always">Always Active</span>
+      </div>
+      <div class="consent-row">
+        <div>
+          <div class="consent-label">Analytics &amp; Performance</div>
+          <div class="consent-desc">Not used on this Site.</div>
+        </div>
+        <span class="consent-status status-none">Not Used</span>
+      </div>
+      <div class="consent-row">
+        <div>
+          <div class="consent-label">Marketing &amp; Advertising</div>
+          <div class="consent-desc">Not used on this Site.</div>
+        </div>
+        <span class="consent-status status-none">Not Used</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. How to Manage Cookies</h2>
+    <p>You can control and delete cookies through your browser settings at any time. Below are links to cookie management instructions for the most common browsers:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+    <p>Please note that disabling cookies may affect the functionality of some features of this Site (such as form submissions).</p>
+    <p>You can also opt out of third-party data collection via <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">Your Online Choices</a> (EU) or <a href="https://optout.aboutads.info/" target="_blank" rel="noopener">AboutAds.info</a>.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>6. Updates to This Policy</h2>
+    <p>We may update this Cookie Policy to reflect changes in applicable law or the technologies used on this Site. The date at the top of this page indicates the most recent revision. We encourage you to review this policy periodically.</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>7. Contact</h2>
+    <p>For any questions or requests relating to this Cookie Policy or your personal data, please contact us via the <a href="index.html#contact">contact form</a> on this Site or via Instagram <a href="https://www.instagram.com/_ludovica_dagna" target="_blank" rel="noopener">@_ludovica_dagna</a>.</p>
+    <p>You have the right to lodge a complaint with the Italian Data Protection Authority (<em>Garante per la protezione dei dati personali</em>): <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="legal-footer">
+    <span>&copy; 2026 Ludovica Benedetta Dagna</span>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="index.html">Back to Site</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
