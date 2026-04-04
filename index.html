@@ -16,7 +16,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&family=Noto+Serif+SC:wght@300;400&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
 
 <!-- lax.js -->
 <script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
@@ -603,13 +603,8 @@ blockquote.philosophy-quote::before{
   flex-wrap:nowrap;
   align-items:center;
   width:max-content;
-  animation:collab-scroll 38s linear infinite
-}
-.collab-runner:hover .collab-belt{animation-play-state:paused}
-
-@keyframes collab-scroll{
-  0%  {transform:translateX(0)}
-  100%{transform:translateX(-50%)}
+  /* Animation driven by JS for cross-device reliability */
+  will-change:transform
 }
 
 /* Each logo cell — identical size, no exceptions */
@@ -658,14 +653,11 @@ blockquote.philosophy-quote::before{
 .cl:hover .cl-badge{color:var(--accent)}
 .cl:hover .cl-badge small{color:var(--accent-mid)}
 
-@media(prefers-reduced-motion:reduce){
-  .collab-belt{animation:none}
-}
+/* prefers-reduced-motion handled by JS */
 @media(max-width:767px){
   .cl{width:155px;height:96px;padding:0 20px}
   .cl img{width:110px !important;height:44px !important;max-width:110px !important;max-height:44px !important}
   .cl-badge{width:110px;font-size:.78rem}
-  .collab-belt{animation-duration:24s}
 }
 
 /* ─────────────────────────────
@@ -690,26 +682,31 @@ blockquote.philosophy-quote::before{
 
 .reels-grid{
   display:grid;
-  /* 3 columns capped at 400px each — keeps embed proportions correct */
-  grid-template-columns:repeat(3,minmax(0,400px));
-  gap:1.5rem;
-  max-width:1280px;margin:0 auto;
+  /* Fixed 340px columns — matches Instagram's natural embed width for Reels */
+  grid-template-columns:repeat(3,340px);
+  gap:1.25rem;
+  max-width:1100px;margin:0 auto;
   justify-content:center
 }
 
-/* Constrain embed inside each cell */
+/* Lock each embed to exactly 340px — no stretching */
 .reels-grid .instagram-media{
-  margin:0 auto !important;
+  margin:0 !important;
   min-width:0 !important;
-  width:100% !important;
-  max-width:400px !important
+  width:340px !important;
+  max-width:340px !important
 }
 
-@media(max-width:900px){
-  .reels-grid{grid-template-columns:repeat(2,minmax(0,400px))}
+@media(max-width:1080px){
+  .reels-grid{grid-template-columns:repeat(2,340px)}
 }
-@media(max-width:540px){
-  .reels-grid{grid-template-columns:minmax(0,400px)}
+@media(max-width:720px){
+  .reels-grid{
+    grid-template-columns:340px;
+    /* On small phones, scale down proportionally */
+    transform-origin:top center;
+    transform:scale(min(1, calc((100vw - 2rem) / 340px)))
+  }
 }
 
 /* ─────────────────────────────
@@ -763,6 +760,56 @@ blockquote.philosophy-quote::before{
   .wa-float{width:50px;height:50px}
   .wa-float svg{width:24px;height:24px}
   .wa-float::after{display:none}
+}
+
+/* ─────────────────────────────
+   LANGUAGE SWITCHER
+───────────────────────────── */
+.lang-switch{
+  position:relative;display:flex;align-items:center;
+  margin-left:1.5rem;flex-shrink:0
+}
+.lang-btn{
+  background:none;border:1px solid var(--border);
+  font-family:var(--body);font-size:.6rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-l);cursor:pointer;
+  padding:.35rem .75rem;min-height:32px;
+  display:flex;align-items:center;gap:.35rem;
+  transition:border-color .2s,color .2s
+}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent)}
+.lang-btn svg{width:10px;height:10px;flex-shrink:0;transition:transform .2s}
+.lang-switch.open .lang-btn svg{transform:rotate(180deg)}
+
+.lang-dropdown{
+  display:none;position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--bg);border:1px solid var(--border);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+  z-index:300;min-width:130px;
+  animation:fadeIn .15s ease
+}
+.lang-switch.open .lang-dropdown{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.lang-option{
+  display:block;width:100%;text-align:left;background:none;border:none;
+  font-family:var(--body);font-size:.68rem;font-weight:500;
+  color:var(--text-l);cursor:pointer;
+  padding:.55rem 1rem;letter-spacing:.04em;
+  transition:background .15s,color .15s
+}
+.lang-option:hover{background:var(--blush);color:var(--accent)}
+.lang-option.active{color:var(--accent);font-weight:700}
+
+/* CJK font override */
+:lang(zh) body,.lang-zh{font-family:'Noto Serif SC',var(--body)}
+:lang(ja) body,.lang-ja{font-family:'Noto Serif JP',var(--body)}
+
+/* Mobile: lang switcher in hamburger row */
+@media(max-width:767px){
+  .lang-switch{margin-left:.75rem}
+  .lang-btn{font-size:.58rem;padding:.3rem .55rem}
 }
 
 /* ─────────────────────────────
@@ -871,13 +918,29 @@ blockquote.philosophy-quote::before{
     <img src="logo.png" alt="LD Digital Atelier Logo" class="nav-logo-img">
   </a>
   <ul class="nav-links" role="list">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#collaborations">Collaborations</a></li>
-    <li><a href="#reels">Reels</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="nav_about">About</a></li>
+    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="#philosophy" data-i18n="nav_philosophy">Philosophy</a></li>
+    <li><a href="#collaborations" data-i18n="nav_collaborations">Collaborations</a></li>
+    <li><a href="#reels" data-i18n="nav_reels">Reels</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
   </ul>
+  <div class="lang-switch" id="langSwitch">
+    <button class="lang-btn" id="langBtn" aria-label="Select language" aria-expanded="false">
+      <span id="langCurrent">EN</span>
+      <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
+    <div class="lang-dropdown" id="langDropdown" role="listbox">
+      <button class="lang-option active" data-lang="en" role="option">EN — English</button>
+      <button class="lang-option" data-lang="it" role="option">IT — Italiano</button>
+      <button class="lang-option" data-lang="es" role="option">ES — Español</button>
+      <button class="lang-option" data-lang="fr" role="option">FR — Français</button>
+      <button class="lang-option" data-lang="zh" role="option">中文</button>
+      <button class="lang-option" data-lang="ja" role="option">日本語</button>
+      <button class="lang-option" data-lang="ru" role="option">РУ — Русский</button>
+    </div>
+  </div>
+
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -886,12 +949,12 @@ blockquote.philosophy-quote::before{
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&times;</button>
   <img src="logo.png" alt="" class="mobile-menu-logo" aria-hidden="true">
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#philosophy" onclick="closeMobile()">Philosophy</a>
-  <a href="#collaborations" onclick="closeMobile()">Collaborations</a>
-  <a href="#reels" onclick="closeMobile()">Reels</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav_about">About</a>
+  <a href="#services" onclick="closeMobile()" data-i18n="nav_services">Services</a>
+  <a href="#philosophy" onclick="closeMobile()" data-i18n="nav_philosophy">Philosophy</a>
+  <a href="#collaborations" onclick="closeMobile()" data-i18n="nav_collaborations">Collaborations</a>
+  <a href="#reels" onclick="closeMobile()" data-i18n="nav_reels">Reels</a>
+  <a href="#contact" onclick="closeMobile()" data-i18n="nav_contact">Contact</a>
 </div>
 
 
@@ -1179,29 +1242,29 @@ blockquote.philosophy-quote::before{
         </p>
         <div class="form-row">
           <div>
-            <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your name">
+            <label for="cf-name" data-i18n="contact_form_name">Name</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your name" data-i18n-ph="contact_form_ph_name">
           </div>
           <div>
-            <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="your@email.com">
+            <label for="cf-email" data-i18n="contact_form_email">Email</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="your@email.com" data-i18n-ph="contact_form_ph_email">
           </div>
         </div>
         <div>
-          <label for="cf-subject">Type of Inquiry</label>
+          <label for="cf-subject" data-i18n="contact_form_subject">Type of Inquiry</label>
           <select id="cf-subject" name="subject">
-            <option value="exhibition">Exhibition Collaboration</option>
-            <option value="curatorial">Curatorial Consultancy</option>
-            <option value="management">Artist Management</option>
-            <option value="digital">Digital Curation / Website</option>
-            <option value="general">General Inquiry</option>
+            <option value="exhibition" data-i18n="contact_form_opt_exhibition">Exhibition Collaboration</option>
+            <option value="curatorial" data-i18n="contact_form_opt_curatorial">Curatorial Consultancy</option>
+            <option value="management" data-i18n="contact_form_opt_management">Artist Management</option>
+            <option value="digital" data-i18n="contact_form_opt_digital">Digital Curation / Website</option>
+            <option value="general" data-i18n="contact_form_opt_general">General Inquiry</option>
           </select>
         </div>
         <div>
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" required placeholder="Describe your project, idea, or inquiry…"></textarea>
+          <label for="cf-message" data-i18n="contact_form_message">Message</label>
+          <textarea id="cf-message" name="message" required placeholder="Describe your project, idea, or inquiry…" data-i18n-ph="contact_form_ph_message"></textarea>
         </div>
-        <button type="submit" id="form-submit">Send Message</button>
+        <button type="submit" id="form-submit" data-i18n="contact_form_btn">Send Message</button>
       </form>
 
     </div>
@@ -1217,8 +1280,8 @@ blockquote.philosophy-quote::before{
     <img src="logo.png" alt="LD Digital Atelier" class="footer-logo">
     <span>&copy; 2026 Ludovica Benedetta Dagna. All rights reserved.</span>
     <div class="footer-links">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="privacy-policy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <a href="cookie-policy.html" data-i18n="footer_cookie">Cookie Policy</a>
       <a href="https://www.instagram.com/_ludovica_dagna" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://wa.me/393486011153" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </div>
@@ -1247,7 +1310,7 @@ blockquote.philosophy-quote::before{
 <div id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(26,19,21,.95);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:1.1rem clamp(1.25rem,5vw,3rem)">
   <div style="max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap">
     <p style="font-family:'Raleway',sans-serif;font-size:.8rem;font-weight:300;line-height:1.65;margin:0;flex:1;min-width:260px;color:rgba(250,247,246,.85)">
-      This site uses only strictly necessary cookies — no tracking, no advertising.
+      <span data-i18n="cookie_text">This site uses only strictly necessary cookies — no tracking, no advertising.</span>
       <a href="cookie-policy.html" style="color:#F0C4D0;text-decoration:underline;margin-left:.3rem">Cookie Policy</a>
       <a href="privacy-policy.html" style="color:#F0C4D0;text-decoration:underline;margin-left:.75rem">Privacy Policy</a>
     </p>
@@ -1256,7 +1319,7 @@ blockquote.philosophy-quote::before{
       style="flex-shrink:0;background:#9B2355;color:#fff;border:none;font-family:'Raleway',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.75rem 1.75rem;cursor:pointer;transition:background .3s;white-space:nowrap;min-height:44px"
       onmouseover="this.style.background='#6E1A3A'"
       onmouseout="this.style.background='#9B2355'"
-    >Accept</button>
+     data-i18n="cookie_btn">Accept</button>
   </div>
 </div>
 
@@ -1264,6 +1327,249 @@ blockquote.philosophy-quote::before{
      SCRIPTS
 ══════════════════════════ -->
 <script>
+
+/* ════════════════════════════════════════════
+   i18n ENGINE
+   Supports: en, it, es, fr, zh, ja, ru
+   - Reads translations/{lang}.json
+   - Applies to data-i18n, data-i18n-ph attrs
+   - Rebuilds dynamic sections (about, services, etc.)
+   - Remembers choice in localStorage
+   - Auto-detects browser language on first visit
+════════════════════════════════════════════ */
+(function(){
+  'use strict';
+
+  var LANGS = ['en','it','es','fr','zh','ja','ru'];
+  var LANG_LABELS = {en:'EN',it:'IT',es:'ES',fr:'FR',zh:'中文',ja:'日本語',ru:'РУ'};
+  var currentLang = 'en';
+  var translations = {};
+
+  /* ── Detect initial language ── */
+  function detectLang(){
+    var saved = localStorage.getItem('ld_lang');
+    if(saved && LANGS.indexOf(saved) !== -1) return saved;
+    var browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split('-')[0];
+    return LANGS.indexOf(browser) !== -1 ? browser : 'en';
+  }
+
+  /* ── Load translation file ── */
+  function loadLang(lang, callback){
+    if(lang === 'en'){ translations = {}; callback(); return; }
+    fetch('translations/' + lang + '.json')
+      .then(function(r){ return r.json(); })
+      .then(function(data){ translations = data; callback(); })
+      .catch(function(){ translations = {}; callback(); });
+  }
+
+  /* ── Get translated string ── */
+  function t(key){ return translations[key] || null; }
+
+  /* ── Apply static data-i18n attributes ── */
+  function applyStatic(){
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var val = t(el.getAttribute('data-i18n'));
+      if(val) el.textContent = val;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var val = t(el.getAttribute('data-i18n-ph'));
+      if(val) el.placeholder = val;
+    });
+  }
+
+  /* ── Apply dynamic CMS-loaded content ── */
+  function applyDynamic(){
+    // Hero
+    var keys = {
+      'cms-hero-overline':'hero_overline',
+      'cms-hero-role':'hero_role',
+      'cms-hero-cta-primary':'hero_cta_primary',
+      'cms-hero-cta-secondary':'hero_cta_secondary'
+    };
+    Object.keys(keys).forEach(function(id){
+      var el = document.getElementById(id);
+      var val = t(keys[id]);
+      if(el && val) el.textContent = val;
+    });
+    // About
+    ['about_label','about_title','about_p1','about_p2','about_p3','about_p4'].forEach(function(key, i){
+      var ids = ['cms-about-label','cms-about-title','cms-about-p1','cms-about-p2','cms-about-p3','cms-about-p4'];
+      var el = document.getElementById(ids[i]);
+      var val = t(key);
+      if(el && val){
+        if(key === 'about_title'){
+          var parts = val.split(' of ');
+          el.innerHTML = parts.length === 2 ? parts[0] + ' of<br><em>' + parts[1] + '</em>' : val;
+        } else { el.textContent = val; }
+      }
+    });
+    // About stats labels
+    var statLbls = document.querySelectorAll('.about-stat-lbl');
+    var statKeys = ['about_stat_1_lbl','about_stat_2_lbl','about_stat_3_lbl'];
+    statLbls.forEach(function(el, i){ var v = t(statKeys[i]); if(v) el.textContent = v; });
+
+    // Tags
+    var tagsList = document.getElementById('cms-tags-list');
+    var tagsVal = translations['tags'];
+    if(tagsList && tagsVal && Array.isArray(tagsVal)){
+      tagsList.innerHTML = tagsVal.map(function(tag){
+        return '<span class="tag" role="listitem">'+tag+'</span>';
+      }).join('');
+    }
+
+    // Services
+    var servicesData = translations['services'];
+    if(servicesData && Array.isArray(servicesData)){
+      var label = t('services_label'); var title = t('services_title');
+      var lEl = document.getElementById('cms-services-label');
+      var tEl = document.getElementById('cms-services-title');
+      if(lEl && label) lEl.textContent = label;
+      if(tEl && title) tEl.textContent = title;
+      var grid = document.getElementById('cms-services-grid');
+      if(grid){
+        var delays = ['reveal-d1','reveal-d2','reveal-d3','reveal-d4'];
+        grid.innerHTML = servicesData.map(function(c, i){
+          return '<article class="service-card reveal '+delays[i]+'" id="lax-card-'+(i+1)+'">'
+            +'<div class="service-num" aria-hidden="true">'+c.num+'</div>'
+            +'<h3>'+c.title+'</h3><p>'+c.description+'</p>'
+            +'<span class="service-tag">'+c.tag+'</span></article>';
+        }).join('');
+        // Re-observe reveals
+        grid.querySelectorAll('.reveal').forEach(function(el){
+          if(window.revealObserver) window.revealObserver.observe(el);
+        });
+      }
+    }
+
+    // Philosophy
+    var philQ = document.getElementById('cms-phil-quote');
+    var philC = document.getElementById('cms-phil-cite');
+    var philL = document.getElementById('cms-phil-label');
+    if(philQ && t('philosophy_quote')) philQ.textContent = t('philosophy_quote');
+    if(philC && t('philosophy_cite')) philC.textContent = t('philosophy_cite');
+    if(philL && t('philosophy_label')) philL.textContent = t('philosophy_label');
+
+    // Collaborations
+    var collabL = document.querySelector('#collaborations .section-label');
+    var collabT = document.querySelector('#collaborations .section-title');
+    if(collabL && t('collab_label')) collabL.textContent = t('collab_label');
+    if(collabT && t('collab_title')) collabT.textContent = t('collab_title');
+
+    // Reels
+    var reelsL = document.getElementById('cms-reels-label');
+    var reelsT = document.getElementById('cms-reels-title');
+    var reelsSub = document.getElementById('cms-reels-subline');
+    if(reelsL && t('reels_label')) reelsL.textContent = t('reels_label');
+    if(reelsT && t('reels_title')) reelsT.textContent = t('reels_title');
+    if(reelsSub && t('reels_subline')) reelsSub.textContent = t('reels_subline');
+
+    // Contact
+    var cKeys = {
+      'cms-contact-label':'contact_label',
+      'cms-contact-title':'contact_title',
+      'cms-contact-intro':'contact_intro',
+      'cms-contact-sub':'contact_sub'
+    };
+    Object.keys(cKeys).forEach(function(id){
+      var el = document.getElementById(id);
+      var val = t(cKeys[id]);
+      if(el && val) el.textContent = val;
+    });
+    // Instagram handle link
+    var igEl = document.getElementById('cms-contact-ig');
+    if(igEl){
+      // Keep href, just update text node (not the svg)
+      igEl.childNodes.forEach(function(n){
+        if(n.nodeType === 3 && n.textContent.trim()) n.textContent = '';
+      });
+    }
+
+    // Form submit button
+    var submitBtn = document.getElementById('form-submit');
+    if(submitBtn && t('contact_form_btn')) submitBtn.textContent = t('contact_form_btn');
+
+    // Footer copyright
+    var footerCopy = document.querySelector('.footer > span');
+    if(footerCopy && t('footer_rights')){
+      footerCopy.textContent = '© 2026 Ludovica Benedetta Dagna. ' + t('footer_rights');
+    }
+  }
+
+  /* ── Apply CJK font class to body ── */
+  function applyFont(lang){
+    document.body.classList.remove('lang-zh','lang-ja');
+    if(lang === 'zh') document.body.classList.add('lang-zh');
+    if(lang === 'ja') document.body.classList.add('lang-ja');
+    document.documentElement.lang = lang;
+  }
+
+  /* ── Update switcher UI ── */
+  function updateSwitcherUI(lang){
+    var current = document.getElementById('langCurrent');
+    if(current) current.textContent = LANG_LABELS[lang] || lang.toUpperCase();
+    document.querySelectorAll('.lang-option').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  /* ── Main: apply language ── */
+  function applyLang(lang, save){
+    currentLang = lang;
+    if(save) localStorage.setItem('ld_lang', lang);
+    loadLang(lang, function(){
+      applyStatic();
+      applyDynamic();
+      applyFont(lang);
+      updateSwitcherUI(lang);
+      closeLangDropdown();
+    });
+  }
+
+  /* ── Dropdown open/close ── */
+  function closeLangDropdown(){
+    var sw = document.getElementById('langSwitch');
+    var btn = document.getElementById('langBtn');
+    if(sw) sw.classList.remove('open');
+    if(btn) btn.setAttribute('aria-expanded','false');
+  }
+
+  /* ── Wire up the switcher ── */
+  document.addEventListener('DOMContentLoaded', function(){
+    var sw   = document.getElementById('langSwitch');
+    var btn  = document.getElementById('langBtn');
+    var dd   = document.getElementById('langDropdown');
+
+    if(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = sw.classList.contains('open');
+        if(isOpen){ closeLangDropdown(); }
+        else { sw.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+      });
+    }
+
+    if(dd){
+      dd.addEventListener('click', function(e){
+        var lang = e.target.getAttribute('data-lang');
+        if(lang) applyLang(lang, true);
+      });
+    }
+
+    document.addEventListener('click', closeLangDropdown);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeLangDropdown();
+    });
+
+    /* Apply initial language */
+    var initLang = detectLang();
+    if(initLang !== 'en'){
+      applyLang(initLang, false);
+    } else {
+      updateSwitcherUI('en');
+    }
+  });
+})();
+
 /* ── Name reveal trigger ── */
 (function(){
   /* Small delay so browser has painted and CSS is ready */
@@ -1919,11 +2225,17 @@ function acceptCookies(){
 <!-- Netlify Identity: redirect to admin after login -->
 <script>
 
-/* ── Collaborations belt — duplicate items for seamless CSS loop ── */
+/* ── Collaborations belt — JS marquee (works on all devices incl. iOS) ── */
 (function(){
-  var belt = document.getElementById('collabBelt');
-  if(!belt) return;
-  // Clone all direct children and append — CSS animates -50% so we need 2x content
+  var runner = document.querySelector('.collab-runner');
+  var belt   = document.getElementById('collabBelt');
+  if(!belt || !runner) return;
+
+  /* Respect reduced motion */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced) return;
+
+  /* Clone items for seamless loop */
   var items = Array.from(belt.children);
   items.forEach(function(item){
     var clone = item.cloneNode(true);
@@ -1931,6 +2243,48 @@ function acceptCookies(){
     clone.setAttribute('tabindex','-1');
     belt.appendChild(clone);
   });
+
+  /* Wait for images to load so scrollWidth is accurate */
+  var pos = 0;
+  var paused = false;
+  /* Speed: px per frame at 60fps — ~0.5px = ~30px/s */
+  var speed = window.innerWidth < 768 ? 0.4 : 0.55;
+  var halfW  = 0;
+  var raf    = null;
+
+  function getHalf(){
+    /* Half of belt = one full set of original items */
+    halfW = belt.scrollWidth / 2;
+  }
+
+  function tick(){
+    if(!paused){
+      pos += speed;
+      if(halfW > 0 && pos >= halfW) pos = 0;
+      belt.style.transform = 'translateX(-' + pos.toFixed(2) + 'px)';
+    }
+    raf = requestAnimationFrame(tick);
+  }
+
+  /* Pause on hover/touch */
+  runner.addEventListener('mouseenter', function(){ paused = true; });
+  runner.addEventListener('mouseleave', function(){ paused = false; });
+  runner.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
+  runner.addEventListener('touchend',   function(){
+    setTimeout(function(){ paused = false; }, 1200);
+  }, {passive:true});
+
+  /* Start after a short delay so images can load */
+  window.addEventListener('load', function(){
+    getHalf();
+    raf = requestAnimationFrame(tick);
+  });
+
+  /* Recalculate if window resizes */
+  window.addEventListener('resize', function(){
+    getHalf();
+    speed = window.innerWidth < 768 ? 0.4 : 0.55;
+  }, {passive:true});
 })();
 
 if(window.netlifyIdentity){

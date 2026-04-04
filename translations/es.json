@@ -1,0 +1,97 @@
+{
+  "lang_name": "Español",
+
+  "nav_about": "Sobre mí",
+  "nav_services": "Servicios",
+  "nav_philosophy": "Filosofía",
+  "nav_collaborations": "Colaboraciones",
+  "nav_reels": "Reels",
+  "nav_contact": "Contacto",
+
+  "hero_overline": "Curadora de Arte · Gestora de Arte · Coordinadora de Proyectos",
+  "hero_role": "Arte Contemporáneo — Curaduría de Exposiciones — Mediación Cultural",
+  "hero_cta_primary": "Contáctame",
+  "hero_cta_secondary": "Descubrir más →",
+
+  "about_label": "La Curadora",
+  "about_title": "La Curaduría como Forma de Mediación",
+  "about_p1": "Ludovica Benedetta Dagna es curadora de arte, gestora artística y coordinadora de proyectos en el campo del arte contemporáneo.",
+  "about_p2": "Su práctica se centra en el desarrollo y la realización de proyectos expositivos, supervisando cada etapa del proceso curatorial y organizativo — desde la definición del concepto y la selección de artistas hasta la producción final de la exposición. Su enfoque combina sensibilidad crítica, visión curatorial y precisión operativa.",
+  "about_p3": "A lo largo de su carrera ha colaborado con artistas, socios culturales e instituciones, desarrollando experiencia en planificación curatorial, desarrollo de contenidos, coordinación de proyectos y logística expositiva. Su trabajo se distingue por el compromiso de apoyar la investigación artística a través de narrativas expositivas cuidadosamente estructuradas.",
+  "about_p4": "Paralelamente a su actividad curatorial, trabaja como gestora de arte, asistiendo a los artistas en el desarrollo, posicionamiento y comunicación de su práctica profesional. Ha establecido colaboraciones internacionales en el campo de la curaduría digital, contribuyendo a proyectos que conectan el arte contemporáneo con la estrategia digital y la representación en línea.",
+  "about_stat_1_lbl": "Alcance Internacional",
+  "about_stat_2_lbl": "Proceso Integral",
+  "about_stat_3_lbl": "Diálogos Artísticos",
+
+  "tags_label": "Áreas de Práctica",
+  "tags": ["Planificación de Exposiciones", "Selección de Artistas", "Desarrollo de Contenidos", "Logística Expositiva", "Gestión Artística", "Estrategia Digital", "Representación en Línea", "Creación de Sitios Web"],
+
+  "services_label": "Lo que Hago",
+  "services_title": "Servicios",
+  "services": [
+    {
+      "num": "01",
+      "title": "Planificación Curatorial",
+      "description": "Definición del concepto, investigación temática, selección de artistas y desarrollo de narrativas expositivas coherentes. Cada proyecto se aborda con profundidad crítica, garantizando una visión artística articulada desde el inicio hasta la noche de inauguración.",
+      "tag": "Concepto · Investigación · Selección"
+    },
+    {
+      "num": "02",
+      "title": "Producción de Exposiciones",
+      "description": "Supervisión organizativa completa de la logística expositiva, planificación del montaje y gestión de la producción. Desde la coordinación del espacio hasta los requisitos técnicos, cada detalle operativo se gestiona con precisión y profesionalidad.",
+      "tag": "Logística · Montaje · Producción"
+    },
+    {
+      "num": "03",
+      "title": "Gestión Artística",
+      "description": "Apoyo estratégico a los artistas en el desarrollo, posicionamiento y comunicación de su práctica profesional — ayudando a construir un perfil público coherente, definir la identidad artística y navegar el mundo del arte contemporáneo con confianza.",
+      "tag": "Posicionamiento · Comunicación · Estrategia"
+    },
+    {
+      "num": "04",
+      "title": "Curaduría Digital",
+      "description": "Colaboraciones internacionales que conectan el arte contemporáneo con la estrategia digital y la representación en línea. Creación de sitios web a medida para artistas que traducen cada visión artística en una presencia digital refinada y coherente.",
+      "tag": "Digital · Sitio Web · Presencia Online"
+    }
+  ],
+
+  "philosophy_label": "Filosofía",
+  "philosophy_quote": "La curaduría no es solo una práctica cultural y crítica, sino también una forma de mediación entre el concepto, la producción y la visibilidad — capaz de transformar los espacios físicos y digitales en plataformas significativas de diálogo artístico.",
+  "philosophy_cite": "— Ludovica Benedetta Dagna",
+
+  "collab_label": "Red",
+  "collab_title": "Colaboraciones",
+
+  "reels_label": "Video",
+  "reels_title": "Reels",
+  "reels_subline": "Una selección de reels de @_ludovica_dagna — exposiciones, proyectos y colaboraciones artísticas.",
+
+  "contact_label": "Contáctame",
+  "contact_title": "Trabajemos Juntos",
+  "contact_intro": "Para colaboraciones expositivas, consultoría curatorial, gestión artística o proyectos de curaduría digital, escríbeme a través del formulario o contáctame directamente en Instagram.",
+  "contact_sub": "Todo proyecto comienza con una conversación.",
+  "contact_form_name": "Nombre",
+  "contact_form_email": "Email",
+  "contact_form_subject": "Tipo de consulta",
+  "contact_form_message": "Mensaje",
+  "contact_form_ph_name": "Tu nombre",
+  "contact_form_ph_email": "tu@email.com",
+  "contact_form_ph_message": "Describe tu proyecto, idea o consulta…",
+  "contact_form_btn": "Enviar Mensaje",
+  "contact_form_sending": "Enviando…",
+  "contact_form_thanks_title": "Gracias.",
+  "contact_form_thanks_body": "Tu mensaje ha sido recibido.<br>Ludovica se pondrá en contacto contigo pronto.",
+  "contact_form_error": "Algo salió mal. Inténtalo de nuevo o contáctanos en Instagram.",
+  "contact_form_opt_exhibition": "Colaboración Expositiva",
+  "contact_form_opt_curatorial": "Consultoría Curatorial",
+  "contact_form_opt_management": "Gestión Artística",
+  "contact_form_opt_digital": "Curaduría Digital / Sitio Web",
+  "contact_form_opt_general": "Consulta General",
+
+  "footer_rights": "Todos los derechos reservados.",
+  "footer_privacy": "Política de Privacidad",
+  "footer_cookie": "Política de Cookies",
+
+  "cookie_text": "Este sitio utiliza únicamente cookies técnicas estrictamente necesarias — sin seguimiento, sin publicidad.",
+  "cookie_btn": "Aceptar"
+}

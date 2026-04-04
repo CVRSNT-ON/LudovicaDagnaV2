@@ -1,0 +1,97 @@
+{
+  "lang_name": "Français",
+
+  "nav_about": "À propos",
+  "nav_services": "Services",
+  "nav_philosophy": "Philosophie",
+  "nav_collaborations": "Collaborations",
+  "nav_reels": "Reels",
+  "nav_contact": "Contact",
+
+  "hero_overline": "Commissaire d'exposition · Gestionnaire artistique · Coordinatrice de projets",
+  "hero_role": "Art contemporain — Commissariat d'exposition — Médiation culturelle",
+  "hero_cta_primary": "Me contacter",
+  "hero_cta_secondary": "En savoir plus →",
+
+  "about_label": "La Commissaire",
+  "about_title": "Le Commissariat comme Forme de Médiation",
+  "about_p1": "Ludovica Benedetta Dagna est commissaire d'exposition, gestionnaire artistique et coordinatrice de projets dans le domaine de l'art contemporain.",
+  "about_p2": "Sa pratique est axée sur le développement et la réalisation de projets d'exposition, supervisant chaque étape du processus curatorial et organisationnel — de la définition du concept et de la sélection des artistes jusqu'à la production finale de l'exposition. Son approche combine sensibilité critique, vision curatoriale et précision opérationnelle.",
+  "about_p3": "Au cours de sa carrière, elle a collaboré avec des artistes, des partenaires culturels et des institutions, développant une expertise en planification curatoriale, développement de contenu, coordination de projets et logistique d'exposition. Son travail se distingue par un fort engagement à soutenir la recherche artistique à travers des récits d'exposition soigneusement structurés.",
+  "about_p4": "Parallèlement à son activité curatoriale, elle travaille comme gestionnaire artistique, accompagnant les artistes dans le développement, le positionnement et la communication de leur pratique professionnelle. Elle a établi des collaborations internationales dans le domaine de la curation numérique, contribuant à des projets qui relient l'art contemporain à la stratégie digitale.",
+  "about_stat_1_lbl": "Portée Internationale",
+  "about_stat_2_lbl": "Processus Complet",
+  "about_stat_3_lbl": "Dialogues Artistiques",
+
+  "tags_label": "Domaines de Pratique",
+  "tags": ["Planification d'Expositions", "Sélection d'Artistes", "Développement de Contenu", "Logistique d'Exposition", "Gestion Artistique", "Stratégie Numérique", "Représentation en Ligne", "Création de Sites Web"],
+
+  "services_label": "Ce que je fais",
+  "services_title": "Services",
+  "services": [
+    {
+      "num": "01",
+      "title": "Planification Curatoriale",
+      "description": "Définition du concept, recherche thématique, sélection des artistes et développement de récits d'exposition cohérents. Chaque projet est abordé avec une profondeur critique, garantissant une vision artistique articulée du début au soir du vernissage.",
+      "tag": "Concept · Recherche · Sélection"
+    },
+    {
+      "num": "02",
+      "title": "Production d'Expositions",
+      "description": "Supervision organisationnelle complète de la logistique d'exposition, planification de l'installation et gestion de la production. De la coordination du lieu aux exigences techniques, chaque détail opérationnel est géré avec précision et professionnalisme.",
+      "tag": "Logistique · Installation · Production"
+    },
+    {
+      "num": "03",
+      "title": "Gestion Artistique",
+      "description": "Soutien stratégique aux artistes dans le développement, le positionnement et la communication de leur pratique professionnelle — aide à construire un profil public cohérent, définir une identité artistique et naviguer dans le monde de l'art contemporain.",
+      "tag": "Positionnement · Communication · Stratégie"
+    },
+    {
+      "num": "04",
+      "title": "Curation Numérique",
+      "description": "Collaborations internationales reliant l'art contemporain à la stratégie numérique et à la représentation en ligne. Création de sites web sur mesure pour les artistes qui traduisent chaque vision artistique en une présence numérique raffinée et cohérente.",
+      "tag": "Numérique · Site Web · Présence en Ligne"
+    }
+  ],
+
+  "philosophy_label": "Philosophie",
+  "philosophy_quote": "Le commissariat n'est pas seulement une pratique culturelle et critique, mais aussi une forme de médiation entre le concept, la production et la visibilité — capable de transformer les espaces physiques et numériques en plateformes significatives de dialogue artistique.",
+  "philosophy_cite": "— Ludovica Benedetta Dagna",
+
+  "collab_label": "Réseau",
+  "collab_title": "Collaborations",
+
+  "reels_label": "Vidéo",
+  "reels_title": "Reels",
+  "reels_subline": "Une sélection de reels de @_ludovica_dagna — expositions, projets et collaborations artistiques.",
+
+  "contact_label": "Me contacter",
+  "contact_title": "Travaillons Ensemble",
+  "contact_intro": "Pour des collaborations d'exposition, des conseils curatoriaux, de la gestion artistique ou des projets de curation numérique, écrivez-moi via le formulaire ou contactez-moi directement sur Instagram.",
+  "contact_sub": "Chaque projet commence par une conversation.",
+  "contact_form_name": "Nom",
+  "contact_form_email": "Email",
+  "contact_form_subject": "Type de demande",
+  "contact_form_message": "Message",
+  "contact_form_ph_name": "Votre nom",
+  "contact_form_ph_email": "votre@email.com",
+  "contact_form_ph_message": "Décrivez votre projet, idée ou demande…",
+  "contact_form_btn": "Envoyer le message",
+  "contact_form_sending": "Envoi en cours…",
+  "contact_form_thanks_title": "Merci.",
+  "contact_form_thanks_body": "Votre message a été reçu.<br>Ludovica vous répondra bientôt.",
+  "contact_form_error": "Une erreur s'est produite. Réessayez ou contactez-nous sur Instagram.",
+  "contact_form_opt_exhibition": "Collaboration d'Exposition",
+  "contact_form_opt_curatorial": "Conseil Curatorial",
+  "contact_form_opt_management": "Gestion Artistique",
+  "contact_form_opt_digital": "Curation Numérique / Site Web",
+  "contact_form_opt_general": "Demande Générale",
+
+  "footer_rights": "Tous droits réservés.",
+  "footer_privacy": "Politique de Confidentialité",
+  "footer_cookie": "Politique de Cookies",
+
+  "cookie_text": "Ce site utilise uniquement des cookies techniques strictement nécessaires — aucun suivi, aucune publicité.",
+  "cookie_btn": "Accepter"
+}

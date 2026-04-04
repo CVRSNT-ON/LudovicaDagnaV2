@@ -1,0 +1,97 @@
+{
+  "lang_name": "Italiano",
+
+  "nav_about": "Chi sono",
+  "nav_services": "Servizi",
+  "nav_philosophy": "Filosofia",
+  "nav_collaborations": "Collaborazioni",
+  "nav_reels": "Reel",
+  "nav_contact": "Contatti",
+
+  "hero_overline": "Curatrice d'Arte · Art Manager · Project Coordinator",
+  "hero_role": "Arte Contemporanea — Cura di Mostre — Mediazione Culturale",
+  "hero_cta_primary": "Contattami",
+  "hero_cta_secondary": "Scopri di più →",
+
+  "about_label": "La Curatrice",
+  "about_title": "La Curatela come Forma di Mediazione",
+  "about_p1": "Ludovica Benedetta Dagna è curatrice d'arte, art manager e project coordinator nel campo dell'arte contemporanea.",
+  "about_p2": "La sua pratica si concentra sullo sviluppo e la realizzazione di progetti espositivi, supervisionando ogni fase del processo curatoriale e organizzativo — dalla definizione del concept e la selezione degli artisti fino alla produzione finale della mostra. Il suo approccio combina sensibilità critica, visione curatoriale e precisione operativa.",
+  "about_p3": "Nel corso della sua carriera ha collaborato con artisti, partner culturali e istituzioni, sviluppando competenze in ambito di pianificazione curatoriale, sviluppo dei contenuti, coordinamento dei progetti e logistica espositiva. Il suo lavoro si distingue per l'impegno nel sostenere la ricerca artistica attraverso narrazioni espositive accuratamente strutturate.",
+  "about_p4": "Parallelamente all'attività curatoriale, lavora come art manager, affiancando gli artisti nello sviluppo, nel posizionamento e nella comunicazione della propria pratica professionale. Ha stabilito collaborazioni internazionali nell'ambito della curatela digitale, contribuendo a progetti che connettono l'arte contemporanea con la strategia digitale e la rappresentazione online.",
+  "about_stat_1_lbl": "Portata Internazionale",
+  "about_stat_2_lbl": "Processo End-to-End",
+  "about_stat_3_lbl": "Dialoghi Artistici",
+
+  "tags_label": "Aree di Competenza",
+  "tags": ["Pianificazione Espositiva", "Selezione Artisti", "Sviluppo Contenuti", "Logistica Espositiva", "Art Management", "Strategia Digitale", "Rappresentazione Online", "Creazione Siti Web"],
+
+  "services_label": "Cosa Faccio",
+  "services_title": "Servizi",
+  "services": [
+    {
+      "num": "01",
+      "title": "Pianificazione Curatoriale",
+      "description": "Definizione del concept, ricerca tematica, selezione degli artisti e sviluppo di narrazioni espositive coerenti. Ogni progetto è affrontato con profondità critica, garantendo una visione artistica articolata dall'inizio alla notte di apertura.",
+      "tag": "Concept · Ricerca · Selezione"
+    },
+    {
+      "num": "02",
+      "title": "Produzione Espositiva",
+      "description": "Supervisione organizzativa completa della logistica espositiva, pianificazione dell'allestimento e gestione della produzione. Dal coordinamento della sede ai requisiti tecnici, ogni dettaglio operativo è gestito con precisione e professionalità.",
+      "tag": "Logistica · Allestimento · Produzione"
+    },
+    {
+      "num": "03",
+      "title": "Art Management",
+      "description": "Supporto strategico agli artisti nello sviluppo, nel posizionamento e nella comunicazione della loro pratica professionale — aiutando a costruire un profilo pubblico coerente, definire l'identità artistica e navigare il mondo dell'arte contemporanea con sicurezza.",
+      "tag": "Posizionamento · Comunicazione · Strategia"
+    },
+    {
+      "num": "04",
+      "title": "Curatela Digitale",
+      "description": "Collaborazioni internazionali che collegano l'arte contemporanea con la strategia digitale e la rappresentazione online. Creazione di siti web su misura per artisti che traducono ogni visione artistica in una presenza digitale raffinata e coerente.",
+      "tag": "Digitale · Sito Web · Presenza Online"
+    }
+  ],
+
+  "philosophy_label": "Filosofia",
+  "philosophy_quote": "La curatela non è solo una pratica culturale e critica, ma anche una forma di mediazione tra concept, produzione e visibilità — capace di trasformare gli spazi fisici e digitali in piattaforme significative di dialogo artistico.",
+  "philosophy_cite": "— Ludovica Benedetta Dagna",
+
+  "collab_label": "Network",
+  "collab_title": "Collaborazioni",
+
+  "reels_label": "Video",
+  "reels_title": "Reel",
+  "reels_subline": "Una selezione di reel da @_ludovica_dagna — mostre, progetti e collaborazioni artistiche.",
+
+  "contact_label": "Contattami",
+  "contact_title": "Lavoriamo Insieme",
+  "contact_intro": "Per collaborazioni espositive, consulenze curatoriali, art management o progetti di curatela digitale, scrivimi tramite il form o contattami direttamente su Instagram.",
+  "contact_sub": "Ogni progetto inizia con una conversazione.",
+  "contact_form_name": "Nome",
+  "contact_form_email": "Email",
+  "contact_form_subject": "Tipo di richiesta",
+  "contact_form_message": "Messaggio",
+  "contact_form_ph_name": "Il tuo nome",
+  "contact_form_ph_email": "tua@email.com",
+  "contact_form_ph_message": "Descrivi il tuo progetto, idea o richiesta…",
+  "contact_form_btn": "Invia Messaggio",
+  "contact_form_sending": "Invio in corso…",
+  "contact_form_thanks_title": "Grazie.",
+  "contact_form_thanks_body": "Il tuo messaggio è stato ricevuto.<br>Ludovica ti risponderà a breve.",
+  "contact_form_error": "Si è verificato un errore. Riprova o contattaci su Instagram.",
+  "contact_form_opt_exhibition": "Collaborazione Espositiva",
+  "contact_form_opt_curatorial": "Consulenza Curatoriale",
+  "contact_form_opt_management": "Art Management",
+  "contact_form_opt_digital": "Curatela Digitale / Sito Web",
+  "contact_form_opt_general": "Richiesta Generica",
+
+  "footer_rights": "Tutti i diritti riservati.",
+  "footer_privacy": "Privacy Policy",
+  "footer_cookie": "Cookie Policy",
+
+  "cookie_text": "Questo sito utilizza solo cookie tecnici strettamente necessari — nessun tracciamento, nessuna pubblicità.",
+  "cookie_btn": "Accetta"
+}

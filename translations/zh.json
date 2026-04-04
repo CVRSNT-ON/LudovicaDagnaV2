@@ -1,0 +1,97 @@
+{
+  "lang_name": "中文",
+
+  "nav_about": "关于",
+  "nav_services": "服务",
+  "nav_philosophy": "理念",
+  "nav_collaborations": "合作",
+  "nav_reels": "视频",
+  "nav_contact": "联系",
+
+  "hero_overline": "艺术策展人 · 艺术经理人 · 项目协调员",
+  "hero_role": "当代艺术 — 展览策划 — 文化调解",
+  "hero_cta_primary": "联系我",
+  "hero_cta_secondary": "了解更多 →",
+
+  "about_label": "策展人",
+  "about_title": "策展作为一种调解形式",
+  "about_p1": "Ludovica Benedetta Dagna是一位活跃于当代艺术领域的艺术策展人、艺术经理人和项目协调员。",
+  "about_p2": "她的实践专注于展览项目的开发与实现，全程监督策展和组织流程的每个阶段——从概念定义和艺术家遴选，到展览的最终呈现。她的方法融合了批判性敏锐度、策展视野与运营精准性，旨在创作出概念连贯、执行专业的项目。",
+  "about_p3": "在她的职业生涯中，她与艺术家、文化合作伙伴和机构广泛合作，在策展规划、内容开发、项目协调和展览物流方面积累了丰富经验。她的工作以坚定支持艺术研究为特色，通过精心构建的展览叙事彰显每位艺术家实践的独特性与深度。",
+  "about_p4": "在策展活动之外，她还担任艺术经理人，协助艺术家发展、定位和传播其专业实践。她在数字策展领域建立了国际合作，参与将当代艺术与数字战略和在线呈现相连接的项目，并支持为艺术家创建专属网站，将其艺术愿景转化为精致而连贯的数字形象。",
+  "about_stat_1_lbl": "国际影响力",
+  "about_stat_2_lbl": "全程服务",
+  "about_stat_3_lbl": "艺术对话",
+
+  "tags_label": "实践领域",
+  "tags": ["展览规划", "艺术家遴选", "内容开发", "展览物流", "艺术管理", "数字战略", "在线呈现", "网站创建"],
+
+  "services_label": "我的服务",
+  "services_title": "服务",
+  "services": [
+    {
+      "num": "01",
+      "title": "策展规划",
+      "description": "概念定义、主题研究、艺术家遴选，以及连贯展览叙事的构建。每个项目都以批判性深度为基础，确保从开幕到落幕都具有清晰的艺术视野。",
+      "tag": "概念 · 研究 · 遴选"
+    },
+    {
+      "num": "02",
+      "title": "展览制作",
+      "description": "对展览物流、装置规划和制作管理进行全面的组织监督。从场地协调到技术要求，每个运营细节都以精准和专业的态度处理。",
+      "tag": "物流 · 装置 · 制作"
+    },
+    {
+      "num": "03",
+      "title": "艺术管理",
+      "description": "为艺术家提供专业实践的发展、定位和传播战略支持——帮助建立连贯的公共形象，定义艺术身份，并自信地驾驭当代艺术世界。",
+      "tag": "定位 · 传播 · 战略"
+    },
+    {
+      "num": "04",
+      "title": "数字策展",
+      "description": "连接当代艺术与数字战略及在线呈现的国际合作。创建专属艺术家网站，将每位艺术家的艺术愿景转化为精致、连贯、持久的数字形象。",
+      "tag": "数字 · 网站 · 在线形象"
+    }
+  ],
+
+  "philosophy_label": "理念",
+  "philosophy_quote": "策展不仅是一种文化与批判实践，也是概念、制作与可见性之间的调解形式——能够将实体和数字空间转化为富有意义的艺术对话平台。",
+  "philosophy_cite": "— Ludovica Benedetta Dagna",
+
+  "collab_label": "合作网络",
+  "collab_title": "合作机构",
+
+  "reels_label": "视频",
+  "reels_title": "精选视频",
+  "reels_subline": "来自 @_ludovica_dagna 的精选视频 — 展览、项目与艺术合作。",
+
+  "contact_label": "联系我",
+  "contact_title": "携手合作",
+  "contact_intro": "如需洽谈展览合作、策展咨询、艺术管理或数字策展项目，请通过表单联系我，或直接在Instagram上与我沟通。",
+  "contact_sub": "每个项目都从一次对话开始。",
+  "contact_form_name": "姓名",
+  "contact_form_email": "邮箱",
+  "contact_form_subject": "咨询类型",
+  "contact_form_message": "留言",
+  "contact_form_ph_name": "您的姓名",
+  "contact_form_ph_email": "您的@邮箱.com",
+  "contact_form_ph_message": "请描述您的项目、想法或咨询内容…",
+  "contact_form_btn": "发送消息",
+  "contact_form_sending": "发送中…",
+  "contact_form_thanks_title": "感谢。",
+  "contact_form_thanks_body": "您的消息已收到。<br>Ludovica将尽快与您联系。",
+  "contact_form_error": "发送失败，请重试或通过Instagram联系我们。",
+  "contact_form_opt_exhibition": "展览合作",
+  "contact_form_opt_curatorial": "策展咨询",
+  "contact_form_opt_management": "艺术管理",
+  "contact_form_opt_digital": "数字策展 / 网站",
+  "contact_form_opt_general": "一般咨询",
+
+  "footer_rights": "版权所有。",
+  "footer_privacy": "隐私政策",
+  "footer_cookie": "Cookie政策",
+
+  "cookie_text": "本网站仅使用严格必要的技术性Cookie — 无追踪，无广告。",
+  "cookie_btn": "接受"
+}
