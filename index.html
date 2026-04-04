@@ -1347,15 +1347,23 @@ blockquote.philosophy-quote::before{
 
   /* ── Detect initial language ── */
   function detectLang(){
+    /* 1. Rispetta la scelta salvata */
     var saved = localStorage.getItem('ld_lang');
     if(saved && LANGS.indexOf(saved) !== -1) return saved;
+    /* 2. Rileva la lingua del browser */
     var browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase().split('-')[0];
+    /* 3. Se la lingua del browser è supportata usala, altrimenti inglese */
     return LANGS.indexOf(browser) !== -1 ? browser : 'en';
   }
 
   /* ── Load translation file ── */
   function loadLang(lang, callback){
-    if(lang === 'en'){ translations = {}; callback(); return; }
+    if(lang === 'en'){
+      translations = {};
+      /* For English, re-fetch content JSONs (source of truth) */
+      reloadEnglishContent(callback);
+      return;
+    }
     fetch('translations/' + lang + '.json')
       .then(function(r){ return r.json(); })
       .then(function(data){ translations = data; callback(); })
@@ -1364,6 +1372,128 @@ blockquote.philosophy-quote::before{
 
   /* ── Get translated string ── */
   function t(key){ return translations[key] || null; }
+
+  /* ── Reload English from content/*.json (source of truth) ── */
+  function reloadEnglishContent(callback){
+    var fetches = [
+      fetch('content/hero.json').then(function(r){return r.json();}),
+      fetch('content/about.json').then(function(r){return r.json();}),
+      fetch('content/services.json').then(function(r){return r.json();}),
+      fetch('content/philosophy.json').then(function(r){return r.json();}),
+      fetch('content/contact.json').then(function(r){return r.json();}),
+      fetch('content/tags.json').then(function(r){return r.json();}),
+      fetch('content/reels.json').then(function(r){return r.json();})
+    ];
+    Promise.all(fetches).then(function(data){
+      var hero=data[0], about=data[1], svc=data[2], phil=data[3], contact=data[4], tags=data[5], reels=data[6];
+
+      /* Hero */
+      var setText = function(id, val){ var el=document.getElementById(id); if(el&&val) el.textContent=val; };
+      setText('cms-hero-overline', hero.overline);
+      setText('cms-hero-role',     hero.role);
+      setText('cms-hero-cta-primary',   hero.cta_primary);
+      setText('cms-hero-cta-secondary', hero.cta_secondary);
+      var n1=document.getElementById('cms-hero-name1'),n2=document.getElementById('cms-hero-name2'),n3=document.getElementById('cms-hero-name3');
+      if(n1) n1.textContent=hero.name_1;
+      if(n2) n2.textContent=hero.name_2;
+      if(n3) n3.textContent=hero.name_3;
+
+      /* About */
+      setText('cms-about-label', about.label);
+      var titleEl=document.getElementById('cms-about-title');
+      if(titleEl && about.title){
+        var parts=about.title.split(' of ');
+        titleEl.innerHTML = parts.length===2 ? parts[0]+' of<br><em>'+parts[1]+'</em>' : about.title;
+      }
+      setText('cms-about-p1', about.paragraph_lead);
+      setText('cms-about-p2', about.paragraph_2);
+      setText('cms-about-p3', about.paragraph_3);
+      setText('cms-about-p4', about.paragraph_4);
+      if(about.stats){
+        var statsEl=document.getElementById('cms-about-stats');
+        if(statsEl) statsEl.innerHTML=about.stats.map(function(s){
+          return '<div><div class="about-stat-num">'+s.num+'</div><div class="about-stat-lbl">'+s.label+'</div></div>';
+        }).join('');
+      }
+
+      /* Tags */
+      var tagsList=document.getElementById('cms-tags-list');
+      if(tagsList && tags.tags) tagsList.innerHTML=tags.tags.map(function(t){
+        return '<span class="tag" role="listitem">'+t+'</span>';
+      }).join('');
+
+      /* Services */
+      setText('cms-services-label', svc.label);
+      setText('cms-services-title', svc.title);
+      var grid=document.getElementById('cms-services-grid');
+      if(grid && svc.cards){
+        var delays=['reveal-d1','reveal-d2','reveal-d3','reveal-d4'];
+        grid.innerHTML=svc.cards.map(function(c,i){
+          return '<article class="service-card reveal '+delays[i]+'" id="lax-card-'+(i+1)+'">'+
+            '<div class="service-num" aria-hidden="true">'+c.num+'</div>'+
+            '<h3>'+c.title+'</h3><p>'+c.description+'</p>'+
+            '<span class="service-tag">'+c.tag+'</span></article>';
+        }).join('');
+        grid.querySelectorAll('.reveal').forEach(function(el){
+          if(window.revealObserver) window.revealObserver.observe(el);
+        });
+      }
+
+      /* Philosophy */
+      setText('cms-phil-label', phil.label);
+      setText('cms-phil-quote', phil.quote);
+      setText('cms-phil-cite',  phil.cite);
+
+      /* Contact */
+      setText('cms-contact-label', contact.label);
+      setText('cms-contact-title', contact.title);
+      setText('cms-contact-intro', contact.intro);
+      setText('cms-contact-sub',   contact.sub);
+      var submitBtn=document.getElementById('form-submit');
+      if(submitBtn) submitBtn.textContent='Send Message';
+
+      /* Nav links back to English */
+      var navMap={'nav_about':'About','nav_services':'Services','nav_philosophy':'Philosophy',
+        'nav_collaborations':'Collaborations','nav_reels':'Reels','nav_contact':'Contact'};
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key=el.getAttribute('data-i18n');
+        if(navMap[key]) el.textContent=navMap[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+        var phMap={
+          'contact_form_ph_name':'Your name',
+          'contact_form_ph_email':'your@email.com',
+          'contact_form_ph_message':'Describe your project, idea, or inquiry…'
+        };
+        var key=el.getAttribute('data-i18n-ph');
+        if(phMap[key]) el.placeholder=phMap[key];
+      });
+
+      /* Reels header */
+      setText('cms-reels-label', reels.label);
+      setText('cms-reels-title', reels.label);
+      var reelsSub=document.getElementById('cms-reels-subline');
+      if(reelsSub && reels.subline) reelsSub.textContent=reels.subline;
+
+      /* Footer */
+      var footerCopy=document.querySelector('.footer > span');
+      if(footerCopy) footerCopy.textContent='© 2026 Ludovica Benedetta Dagna. All rights reserved.';
+
+      /* Collab labels */
+      var collabL=document.querySelector('#collaborations .section-label');
+      var collabT=document.querySelector('#collaborations .section-title');
+      if(collabL) collabL.textContent='Network';
+      if(collabT) collabT.textContent='Collaborations';
+
+      /* Cookie */
+      var cookieSpan=document.querySelector('[data-i18n="cookie_text"]');
+      if(cookieSpan) cookieSpan.textContent='This site uses only strictly necessary cookies — no tracking, no advertising.';
+      var cookieBtn=document.querySelector('[data-i18n="cookie_btn"]');
+      if(cookieBtn) cookieBtn.textContent='Accept';
+
+      if(callback) callback();
+    }).catch(function(){ if(callback) callback(); });
+  }
 
   /* ── Apply static data-i18n attributes ── */
   function applyStatic(){
@@ -1562,11 +1692,7 @@ blockquote.philosophy-quote::before{
 
     /* Apply initial language */
     var initLang = detectLang();
-    if(initLang !== 'en'){
-      applyLang(initLang, false);
-    } else {
-      updateSwitcherUI('en');
-    }
+    applyLang(initLang, false);
   });
 })();
 
