@@ -1,13 +1,22 @@
 {
-  "label": "The Curator",
+  "label": "The Curator X",
   "title": "Curatorship as a Form of Mediation",
   "paragraph_lead": "Ludovica Benedetta Dagna is an Art Curator, Art Manager, and Project Coordinator working in the field of contemporary art.",
   "paragraph_2": "Her practice focuses on the development and realization of exhibition projects, overseeing each stage of the curatorial and organizational process — from concept definition and artist selection to the final production of the exhibition. Her approach combines critical sensitivity, curatorial vision, and operational precision.",
   "paragraph_3": "Throughout her career she has collaborated with artists, cultural partners, and institutions, developing expertise across curatorial planning, content development, project coordination, and exhibition logistics. Her work is distinguished by a strong commitment to supporting artistic research through carefully structured exhibition narratives.",
   "paragraph_4": "Alongside her curatorial activity, she works as an Art Manager, assisting artists in the development, positioning, and communication of their professional practice. She has established international collaborations in digital curation, connecting contemporary art with digital strategy and online representation.",
   "stats": [
-    { "num": "IT", "label": "International Reach" },
-    { "num": "360°", "label": "End-to-End Process" },
-    { "num": "∞", "label": "Artistic Dialogues" }
+    {
+      "num": "IT",
+      "label": "International Reach"
+    },
+    {
+      "num": "360°",
+      "label": "End-to-End Process"
+    },
+    {
+      "num": "∞",
+      "label": "Artistic Dialogues"
+    }
   ]
 }
