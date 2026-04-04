@@ -690,24 +690,26 @@ blockquote.philosophy-quote::before{
 
 .reels-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  /* 3 columns capped at 400px each — keeps embed proportions correct */
+  grid-template-columns:repeat(3,minmax(0,400px));
   gap:1.5rem;
-  max-width:var(--max-w);margin:0 auto
+  max-width:1280px;margin:0 auto;
+  justify-content:center
 }
 
-/* Force embeds to fill their cell cleanly */
+/* Constrain embed inside each cell */
 .reels-grid .instagram-media{
   margin:0 auto !important;
   min-width:0 !important;
   width:100% !important;
-  max-width:100% !important
+  max-width:400px !important
 }
 
 @media(max-width:900px){
-  .reels-grid{grid-template-columns:repeat(2,1fr)}
+  .reels-grid{grid-template-columns:repeat(2,minmax(0,400px))}
 }
 @media(max-width:540px){
-  .reels-grid{grid-template-columns:1fr}
+  .reels-grid{grid-template-columns:minmax(0,400px)}
 }
 
 /* ─────────────────────────────
