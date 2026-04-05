@@ -599,12 +599,16 @@ blockquote.philosophy-quote::before{
 
 /* The scrolling belt — JS will clone children to fill it */
 .collab-belt{
-  display:flex;
+  display:-webkit-inline-flex;
+  display:inline-flex;
   flex-wrap:nowrap;
+  -webkit-flex-wrap:nowrap;
   align-items:center;
-  width:max-content;
-  /* Animation driven by JS for cross-device reliability */
-  will-change:transform
+  -webkit-align-items:center;
+  /* width:max-content replaced by inline-flex which sizes to content */
+  will-change:transform;
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden
 }
 
 /* Each logo cell — identical size, no exceptions */
@@ -2351,66 +2355,76 @@ function acceptCookies(){
 <!-- Netlify Identity: redirect to admin after login -->
 <script>
 
-/* ── Collaborations belt — JS marquee (works on all devices incl. iOS) ── */
+/* ── Collaborations belt — iOS-safe marquee ── */
 (function(){
   var runner = document.querySelector('.collab-runner');
   var belt   = document.getElementById('collabBelt');
   if(!belt || !runner) return;
-
-  /* Respect reduced motion */
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduced) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   /* Clone items for seamless loop */
-  var items = Array.from(belt.children);
-  items.forEach(function(item){
+  var origItems = Array.from(belt.children);
+  origItems.forEach(function(item){
     var clone = item.cloneNode(true);
     clone.setAttribute('aria-hidden','true');
     clone.setAttribute('tabindex','-1');
     belt.appendChild(clone);
   });
 
-  /* Wait for images to load so scrollWidth is accurate */
   var pos = 0;
   var paused = false;
-  /* Speed: px per frame at 60fps — ~0.5px = ~30px/s */
-  var speed = window.innerWidth < 768 ? 0.4 : 0.55;
-  var halfW  = 0;
-  var raf    = null;
+  var halfW = 0;
+  var speed = window.innerWidth < 768 ? 0.5 : 0.7;
 
-  function getHalf(){
-    /* Half of belt = one full set of original items */
-    halfW = belt.scrollWidth / 2;
+  /* iOS fix: force GPU layer on belt */
+  belt.style.webkitTransform = 'translate3d(0,0,0)';
+  belt.style.transform       = 'translate3d(0,0,0)';
+
+  /* iOS fix: runner must have explicit height + overflow:hidden
+     and -webkit-overflow-scrolling must NOT be set */
+  runner.style.overflow = 'hidden';
+  runner.style.webkitOverflowScrolling = 'auto';
+
+  /* Measure halfW — retry until images give us a real value */
+  function measure(){
+    var w = belt.offsetWidth;
+    if(w > 100){
+      halfW = w / 2;
+    } else {
+      /* Images not ready yet — retry */
+      setTimeout(measure, 100);
+    }
   }
 
   function tick(){
-    if(!paused){
+    if(!paused && halfW > 0){
       pos += speed;
-      if(halfW > 0 && pos >= halfW) pos = 0;
-      belt.style.transform = 'translateX(-' + pos.toFixed(2) + 'px)';
+      if(pos >= halfW) pos = 0;
+      /* translate3d triggers GPU compositing on iOS Safari */
+      var tx = 'translate3d(-' + pos.toFixed(2) + 'px,0,0)';
+      belt.style.webkitTransform = tx;
+      belt.style.transform       = tx;
     }
-    raf = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
 
-  /* Pause on hover/touch */
   runner.addEventListener('mouseenter', function(){ paused = true; });
   runner.addEventListener('mouseleave', function(){ paused = false; });
   runner.addEventListener('touchstart', function(){ paused = true; }, {passive:true});
-  runner.addEventListener('touchend',   function(){
-    setTimeout(function(){ paused = false; }, 1200);
+  runner.addEventListener('touchend', function(){
+    setTimeout(function(){ paused = false; }, 800);
   }, {passive:true});
 
-  /* Start after a short delay so images can load */
-  window.addEventListener('load', function(){
-    getHalf();
-    raf = requestAnimationFrame(tick);
-  });
-
-  /* Recalculate if window resizes */
   window.addEventListener('resize', function(){
-    getHalf();
-    speed = window.innerWidth < 768 ? 0.4 : 0.55;
+    halfW = belt.offsetWidth / 2;
+    speed = window.innerWidth < 768 ? 0.5 : 0.7;
   }, {passive:true});
+
+  /* Start: measure after DOM paint, then begin loop */
+  requestAnimationFrame(function(){
+    measure();
+    tick();
+  });
 })();
 
 if(window.netlifyIdentity){
