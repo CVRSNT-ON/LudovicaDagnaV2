@@ -713,6 +713,36 @@ blockquote.philosophy-quote::before{
   }
 }
 
+/* ── Collaborations mobile static grid ── */
+.collab-static{
+  display:none; /* shown only on mobile via media query below */
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  max-width:var(--max-w);margin:0 auto
+}
+.collab-static .cl{
+  background:var(--card);
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:88px;padding:0 12px;
+  border-right:none;box-sizing:border-box;
+  text-decoration:none;transition:background .2s
+}
+.collab-static .cl:hover{background:var(--blush)}
+.collab-static .cl img{
+  width:84px !important;height:36px !important;
+  max-width:84px !important;max-height:36px !important;
+  object-fit:contain !important;
+  filter:grayscale(1) opacity(.6);transition:filter .3s
+}
+.collab-static .cl:hover img{filter:grayscale(0) opacity(1)}
+.collab-static .cl-badge{width:84px;font-size:.68rem;line-height:1.2}
+.collab-static .cl-badge small{font-size:.45rem}
+@media(max-width:767px){
+  .collab-runner{display:none !important}
+  .collab-static{display:grid}
+}
+
 /* ─────────────────────────────
    WHATSAPP FLOATING BUTTON
 ───────────────────────────── */
@@ -913,6 +943,16 @@ blockquote.philosophy-quote::before{
 </style>
 </head>
 <body>
+<!-- Netlify Forms detection — hidden, never shown to users -->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" method="POST" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="contact">
+  <input name="bot-field">
+  <input name="name">
+  <input name="email">
+  <input name="subject">
+  <textarea name="message"></textarea>
+</form>
+
 
 <!-- ══════════════════════════
      NAV
@@ -1198,6 +1238,41 @@ blockquote.philosophy-quote::before{
 
   <div class="reels-grid" id="reels-grid">
     <!-- Populated from content/reels.json -->
+  </div>
+
+
+  <!-- Mobile static grid (visible only on mobile) -->
+  <div class="collab-static">
+    <a class="cl" href="https://www.oasi-art.eu/" target="_blank" rel="noopener noreferrer" aria-label="OASI">
+      <div class="cl-badge">O A S I<small>Art Exhibitions</small></div>
+    </a>
+    <a class="cl" href="https://galeriamarzia.com/" target="_blank" rel="noopener noreferrer" aria-label="Galeria Marzia">
+      <img src="collab/logo-marzia.png" alt="Galeria Marzia">
+    </a>
+    <a class="cl" href="https://spaziosv.com/" target="_blank" rel="noopener noreferrer" aria-label="Spazio SV">
+      <img src="https://spaziosv.com/wp-content/uploads/2019/02/logo-sito-sv.png" alt="Spazio SV">
+    </a>
+    <a class="cl" href="https://www.galleriabellini.com/" target="_blank" rel="noopener noreferrer" aria-label="Galleria Bellini">
+      <img src="collab/logo-bellini.png" alt="Galleria Bellini">
+    </a>
+    <a class="cl" href="https://www.galleriacael.com/" target="_blank" rel="noopener noreferrer" aria-label="Galleria Cael">
+      <img src="https://www.galleriacael.com/wp-content/uploads/2022/11/LOGO-NUOVO-1-540x540-1.jpg" alt="Galleria Cael">
+    </a>
+    <a class="cl" href="https://www.palazzopisanirevedin.it/" target="_blank" rel="noopener noreferrer" aria-label="Palazzo Pisani Revedin">
+      <img src="collab/logo-pisani.png" alt="Palazzo Pisani Revedin" style="border-radius:3px">
+    </a>
+    <a class="cl" href="https://www.guidotommasi.it/" target="_blank" rel="noopener noreferrer" aria-label="Guido Tommasi Editore">
+      <img src="https://www.guidotommasi.it/resources/images/logo_gte.png" alt="Guido Tommasi Editore">
+    </a>
+    <a class="cl" href="https://www.casainternazionaledelledonne.org/" target="_blank" rel="noopener noreferrer" aria-label="Casa Internazionale delle Donne">
+      <img src="collab/logo-casadonne.png" alt="Casa Internazionale delle Donne">
+    </a>
+    <a class="cl" href="https://museodelmarsantapola.com/" target="_blank" rel="noopener noreferrer" aria-label="Museo del Mar Santa Pola">
+      <img src="https://museodelmarsantapola.com/wp-content/uploads/2020/12/museodelmarsantapola_logoweb_horizontal.jpg" alt="Museo del Mar Santa Pola">
+    </a>
+    <a class="cl" href="https://www.medinaroma.com/" target="_blank" rel="noopener noreferrer" aria-label="Medina Art Gallery Roma">
+      <img src="https://www.medinaroma.com/wp-content/uploads/2019/04/logo_Medina_new_sfondo_trasparente_per_header_sito_small.png" alt="Medina Art Gallery Roma">
+    </a>
   </div>
 
 </section>
@@ -1609,14 +1684,7 @@ blockquote.philosophy-quote::before{
       var val = t(cKeys[id]);
       if(el && val) el.textContent = val;
     });
-    // Instagram handle link
-    var igEl = document.getElementById('cms-contact-ig');
-    if(igEl){
-      // Keep href, just update text node (not the svg)
-      igEl.childNodes.forEach(function(n){
-        if(n.nodeType === 3 && n.textContent.trim()) n.textContent = '';
-      });
-    }
+    // Instagram handle — static, no translation needed
 
     // Form submit button
     var submitBtn = document.getElementById('form-submit');
