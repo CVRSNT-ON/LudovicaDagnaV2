@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR-SITE-URL.netlify.app/sitemap.xml
+# Block admin and internal paths from indexing
+Disallow: /admin/
+Disallow: /content/
+Disallow: /translations/
+Disallow: /images/uploads/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://www.ludovicadagna.art/sitemap.xml
