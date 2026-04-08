@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Artist File Submission — LD Digital Atelier</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Fonts — same as main site -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & TOKENS (from main site) ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#FAF7F6;
+  --bg-blush:#F8EEEF;
+  --text:#1A1315;
+  --text-l:#8A7272;
+  --text-m:#5C4848;
+  --accent:#9B2355;
+  --accent-mid:#C4657A;
+  --accent-deep:#6E1A3A;
+  --accent-gold:#C8962A;
+  --accent-light:#F0C4D0;
+  --blush:#F9EEF1;
+  --border:#EDD5DC;
+  --card:#FFFAFB;
+  --display:'Cormorant Garamond',Georgia,serif;
+  --body:'Raleway',-apple-system,sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:var(--body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+img{display:block;max-width:100%}
+
+/* ── HEADER ── */
+.page-header{
+  padding:1.25rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid var(--border);
+  background:rgba(250,247,246,.94);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.header-logo{
+  height:44px;
+  width:auto;
+  max-width:160px;
+  object-fit:contain;
+  transition:opacity .3s;
+}
+.header-logo:hover{opacity:.75}
+
+/* ── HERO INTRO ── */
+.form-hero{
+  background:var(--blush);
+  padding:clamp(3rem,6vw,5rem) 1.5rem clamp(2.5rem,5vw,4rem);
+  text-align:center;
+}
+.form-hero-inner{
+  max-width:640px;
+  margin:0 auto;
+}
+.form-title{
+  font-family:var(--display);
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:400;
+  color:var(--text);
+  letter-spacing:.02em;
+  line-height:1.2;
+  margin-bottom:.75rem;
+}
+.form-subtitle{
+  font-size:.88rem;
+  color:var(--text-m);
+  line-height:1.75;
+}
+
+/* ── MAIN FORM AREA ── */
+.form-container{
+  flex:1;
+  max-width:700px;
+  margin:0 auto;
+  padding:3rem 1.5rem 4rem;
+  width:100%;
+}
+
+/* ── SECTION DIVIDERS ── */
+.form-section{
+  margin-bottom:2.75rem;
+}
+.form-section-title{
+  font-family:var(--display);
+  font-size:1.35rem;
+  font-weight:400;
+  color:var(--text);
+  letter-spacing:.03em;
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--border);
+  margin-bottom:1.5rem;
+}
+
+/* ── FORM FIELDS ── */
+.field{margin-bottom:1.35rem}
+
+.field-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+}
+
+.field label{
+  display:block;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text-m);
+  margin-bottom:.45rem;
+}
+.field label .req{color:var(--accent)}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field input[type="url"],
+.field textarea{
+  width:100%;
+  padding:.8rem 1rem;
+  font-family:var(--body);
+  font-size:.88rem;
+  font-weight:300;
+  color:var(--text);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  outline:none;
+  transition:border-color .3s, box-shadow .3s;
+}
+.field input:focus,
+.field textarea:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(155,35,85,.08);
+}
+.field input::placeholder,
+.field textarea::placeholder{color:var(--text-l);opacity:.55}
+
+.field textarea{
+  min-height:140px;
+  resize:vertical;
+  line-height:1.7;
+}
+
+.field-hint{
+  font-size:.7rem;
+  color:var(--text-l);
+  margin-top:.35rem;
+  line-height:1.5;
+}
+
+/* Instagram handle prefix */
+.input-with-prefix{
+  display:flex;
+  align-items:stretch;
+}
+.input-prefix{
+  display:flex;
+  align-items:center;
+  padding:0 .85rem;
+  font-size:.88rem;
+  font-weight:400;
+  color:var(--text-l);
+  background:var(--blush);
+  border:1px solid var(--border);
+  border-right:none;
+  border-radius:6px 0 0 6px;
+  white-space:nowrap;
+}
+.input-with-prefix input{
+  border-radius:0 6px 6px 0;
+}
+
+/* ── FILE UPLOAD ── */
+.upload-section{margin-bottom:1.5rem}
+
+.dropzone{
+  border:2px dashed var(--border);
+  border-radius:10px;
+  padding:2.5rem 1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .3s, background .3s;
+  background:var(--card);
+}
+.dropzone:hover,
+.dropzone.drag-over{
+  border-color:var(--accent);
+  background:var(--blush);
+}
+.dropzone-icon{
+  font-size:2.2rem;
+  color:var(--accent-light);
+  margin-bottom:.6rem;
+  line-height:1;
+}
+.dropzone-text{
+  font-size:.85rem;
+  color:var(--text-l);
+  line-height:1.6;
+}
+.dropzone-text strong{
+  color:var(--accent);
+  font-weight:500;
+  cursor:pointer;
+}
+.dropzone-hint{
+  font-size:.7rem;
+  color:var(--text-l);
+  opacity:.65;
+  margin-top:.4rem;
+}
+
+/* ── FILE LIST ── */
+.file-list{
+  margin-top:1rem;
+  display:flex;
+  flex-direction:column;
+  gap:.6rem;
+}
+.file-item{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  padding:.6rem .8rem;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  animation:fadeSlideIn .3s ease;
+}
+@keyframes fadeSlideIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.file-thumb{
+  width:52px;
+  height:52px;
+  border-radius:6px;
+  object-fit:cover;
+  flex-shrink:0;
+  background:var(--blush);
+}
+.file-info{flex:1;min-width:0}
+
+.file-name-label{
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--text-l);
+  margin-bottom:.2rem;
+  display:block;
+}
+.file-name-input{
+  width:100%;
+  padding:.4rem .55rem;
+  font-family:var(--body);
+  font-size:.82rem;
+  font-weight:400;
+  color:var(--text);
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:4px;
+  outline:none;
+  transition:border-color .2s, background .2s;
+}
+.file-name-input:hover{
+  background:var(--bg);
+  border-color:var(--border);
+}
+.file-name-input:focus{
+  background:var(--bg);
+  border-color:var(--accent);
+}
+.file-meta{
+  font-size:.65rem;
+  color:var(--text-l);
+  margin-top:.1rem;
+  padding-left:.55rem;
+}
+.file-remove{
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:var(--text-l);
+  font-size:1.2rem;
+  padding:.35rem;
+  border-radius:4px;
+  transition:color .2s, background .2s;
+  flex-shrink:0;
+  line-height:1;
+}
+.file-remove:hover{
+  color:var(--accent-deep);
+  background:var(--blush);
+}
+
+.file-count{
+  font-size:.7rem;
+  color:var(--text-l);
+  margin-top:.4rem;
+  text-align:right;
+}
+
+/* ── SUBMIT ── */
+.submit-area{
+  margin-top:3rem;
+  text-align:center;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.submit-note{
+  font-size:.75rem;
+  color:var(--text-l);
+  margin-bottom:1.25rem;
+  line-height:1.6;
+}
+
+.btn-submit{
+  display:inline-block;
+  padding:1rem 3.5rem;
+  font-family:var(--body);
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#fff;
+  background:var(--accent);
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  transition:background .3s, transform .15s, box-shadow .3s;
+}
+.btn-submit:hover{
+  background:var(--accent-deep);
+  box-shadow:0 8px 28px rgba(110,26,58,.22);
+}
+.btn-submit:active{transform:scale(.97)}
+.btn-submit:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+/* ── PROGRESS ── */
+.progress-wrap{
+  display:none;
+  margin-top:1.25rem;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.progress-wrap.visible{display:block}
+.progress-bar{
+  height:3px;
+  background:var(--border);
+  border-radius:2px;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  background:var(--accent);
+  width:0%;
+  border-radius:2px;
+  transition:width .3s ease;
+}
+.progress-text{
+  font-size:.7rem;
+  color:var(--text-l);
+  margin-top:.35rem;
+  text-align:center;
+}
+
+/* ── MESSAGES ── */
+.msg{
+  margin-top:1.25rem;
+  padding:1rem 1.25rem;
+  border-radius:8px;
+  font-size:.82rem;
+  line-height:1.5;
+  display:none;
+  max-width:480px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.msg.success{
+  display:block;
+  background:#edf7ed;
+  color:#2e5f2e;
+  border:1px solid #c3e6c3;
+}
+.msg.error{
+  display:block;
+  background:#fceaea;
+  color:#8c2626;
+  border:1px solid #f0c0c0;
+}
+
+/* ── FOOTER ── */
+.page-footer{
+  border-top:1px solid var(--border);
+  padding:1.5rem 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1.5rem;
+  flex-wrap:wrap;
+}
+.footer-logo{
+  height:36px;
+  width:auto;
+  max-width:110px;
+  object-fit:contain;
+  opacity:.8;
+}
+.footer-text{
+  font-size:.68rem;
+  color:var(--text-l);
+  letter-spacing:.04em;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .form-container{padding:2rem 1.15rem 3rem}
+  .field-row{grid-template-columns:1fr}
+  .file-item{flex-wrap:wrap}
+  .file-thumb{width:44px;height:44px}
+  .btn-submit{width:100%;padding:1rem 1rem}
+  .input-prefix{padding:0 .6rem;font-size:.82rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="page-header">
+  <a href="/">
+    <img src="logo.png" alt="LD Digital Atelier" class="header-logo">
+  </a>
+</header>
+
+<!-- ── Hero intro ── -->
+<section class="form-hero">
+  <div class="form-hero-inner">
+    <h1 class="form-title">Artist File Submission</h1>
+    <p class="form-subtitle">
+      Welcome. Please fill in your details and upload your artwork images below.
+      This information will be used to create your professional artist website.
+    </p>
+  </div>
+</section>
+
+<!-- ── Form ── -->
+<main class="form-container">
+  <form id="artist-form" novalidate>
+
+    <!-- ━━ SECTION 1: Personal Info ━━ -->
+    <div class="form-section">
+      <h2 class="form-section-title">Personal Information</h2>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fname">First Name <span class="req">*</span></label>
+          <input type="text" id="fname" name="first_name" required placeholder="e.g. Marina">
+        </div>
+        <div class="field">
+          <label for="lname">Last Name <span class="req">*</span></label>
+          <input type="text" id="lname" name="last_name" required placeholder="e.g. Abramović">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" required placeholder="artist@example.com">
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="+39 333 123 4567">
+      </div>
+
+      <div class="field">
+        <label for="instagram">Instagram</label>
+        <div class="input-with-prefix">
+          <span class="input-prefix">@</span>
+          <input type="text" id="instagram" name="instagram" placeholder="your.handle">
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- ━━ SECTION 2: Biography ━━ -->
+    <div class="form-section">
+      <h2 class="form-section-title">Biography</h2>
+
+      <div class="field">
+        <label for="bio">Artist Statement / Biography <span class="req">*</span></label>
+        <textarea id="bio" name="biography" required
+          placeholder="Write about your artistic practice, background, inspirations, and vision. This text will appear on your website."></textarea>
+        <p class="field-hint">
+          Write in the language you prefer — we will adapt it for your website. You can include your artistic statement, CV highlights, exhibitions, or anything you'd like visitors to know.
+        </p>
+      </div>
+    </div>
+
+    <!-- ━━ SECTION 3: Artistic Practice ━━ -->
+    <div class="form-section">
+      <h2 class="form-section-title">Artistic Practice</h2>
+
+      <div class="field">
+        <label for="medium">Primary Medium / Technique <span class="req">*</span></label>
+        <input type="text" id="medium" name="medium" required placeholder="e.g. Oil on canvas, Digital art, Sculpture, Photography">
+        <p class="field-hint">What type of art do you create? This helps us design the right kind of website for your work.</p>
+      </div>
+
+      <div class="field">
+        <label for="art-location">City / Country</label>
+        <input type="text" id="art-location" name="location" placeholder="e.g. Milan, Italy">
+      </div>
+    </div>
+
+    <!-- ━━ SECTION 4: Artwork Images ━━ -->
+    <div class="form-section">
+      <h2 class="form-section-title">Artwork Images</h2>
+      <p class="field-hint" style="margin-top:-.75rem;margin-bottom:1.25rem">
+        Upload up to 20 images. For each image, please enter the <strong>title of the artwork</strong> — this will be displayed on your website.
+      </p>
+
+      <div class="upload-section">
+        <div class="dropzone" id="dropzone">
+          <div class="dropzone-icon">✦</div>
+          <p class="dropzone-text">
+            Drag &amp; drop your images here, or <strong id="browse-btn">browse files</strong>
+          </p>
+          <p class="dropzone-hint">JPG, PNG, WebP — max 10 MB each, up to 20 files</p>
+          <input type="file" id="file-input" multiple accept="image/jpeg,image/png,image/webp" hidden>
+        </div>
+
+        <div class="file-list" id="file-list"></div>
+        <div class="file-count" id="file-count"></div>
+      </div>
+    </div>
+
+    <!-- ━━ SECTION 5: Additional Notes ━━ -->
+    <div class="form-section">
+      <h2 class="form-section-title">Additional Notes</h2>
+
+      <div class="field">
+        <label for="notes">Anything else we should know?</label>
+        <textarea id="notes" name="notes" style="min-height:100px"
+          placeholder="Preferred color palette, references, upcoming exhibitions, specific requests…"></textarea>
+      </div>
+    </div>
+
+    <!-- ━━ SUBMIT ━━ -->
+    <div class="submit-area">
+      <p class="submit-note">
+        By submitting this form you consent to the processing of your data for the purpose of creating your artist website.
+        Your information will be handled in accordance with our <a href="/privacy-policy.html" target="_blank" style="color:var(--accent)">Privacy Policy</a>.
+      </p>
+      <button type="submit" class="btn-submit" id="submit-btn">Submit</button>
+
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <p class="progress-text" id="progress-text">Uploading…</p>
+      </div>
+
+      <div class="msg" id="msg"></div>
+    </div>
+
+  </form>
+</main>
+
+<!-- ── Footer ── -->
+<footer class="page-footer">
+  <img src="logo.png" alt="LD Digital Atelier" class="footer-logo">
+  <span class="footer-text">&copy; 2026 LD Digital Atelier — Confidential submission form</span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ═══════════════════════════════════════════════════════════════
+  //  CONFIGURATION — Replace with your actual n8n webhook URL
+  // ═══════════════════════════════════════════════════════════════
+  var WEBHOOK_URL = 'https://cvrllc.app.n8n.cloud/webhook/artist-intake';
+  // ═══════════════════════════════════════════════════════════════
+
+  var MAX_FILES = 20;
+  var MAX_SIZE_BYTES = 10 * 1024 * 1024;
+  var ALLOWED = ['image/jpeg','image/png','image/webp'];
+
+  var files = []; // {id, file, artworkTitle}
+  var uid = 0;
+
+  // DOM refs
+  var $ = function(id){ return document.getElementById(id); };
+  var dropzone    = $('dropzone');
+  var fileInput   = $('file-input');
+  var browseBtn   = $('browse-btn');
+  var fileList    = $('file-list');
+  var fileCount   = $('file-count');
+  var form        = $('artist-form');
+  var submitBtn   = $('submit-btn');
+  var progressWrap= $('progress-wrap');
+  var progressFill= $('progress-fill');
+  var progressText= $('progress-text');
+  var msgEl       = $('msg');
+
+  // ── Drag & Drop ──
+  ['dragenter','dragover'].forEach(function(e){
+    dropzone.addEventListener(e, function(ev){ ev.preventDefault(); dropzone.classList.add('drag-over'); });
+  });
+  ['dragleave','drop'].forEach(function(e){
+    dropzone.addEventListener(e, function(ev){ ev.preventDefault(); dropzone.classList.remove('drag-over'); });
+  });
+  dropzone.addEventListener('drop', function(e){ addFiles(e.dataTransfer.files); });
+
+  browseBtn.addEventListener('click', function(e){ e.stopPropagation(); fileInput.click(); });
+  dropzone.addEventListener('click', function(e){ if(e.target !== browseBtn) fileInput.click(); });
+  fileInput.addEventListener('change', function(){ addFiles(fileInput.files); fileInput.value = ''; });
+
+  function addFiles(list){
+    hideMsg();
+    for(var i = 0; i < list.length; i++){
+      var f = list[i];
+      if(files.length >= MAX_FILES){ showMsg('error','Maximum ' + MAX_FILES + ' files allowed.'); break; }
+      if(ALLOWED.indexOf(f.type) === -1){ showMsg('error','"' + f.name + '" — only JPG, PNG, WebP accepted.'); continue; }
+      if(f.size > MAX_SIZE_BYTES){ showMsg('error','"' + f.name + '" exceeds the 10 MB limit.'); continue; }
+      files.push({ id: ++uid, file: f, artworkTitle: '' });
+    }
+    render();
+  }
+
+  function render(){
+    fileList.innerHTML = '';
+    files.forEach(function(entry, idx){
+      var item = document.createElement('div');
+      item.className = 'file-item';
+      item.dataset.id = entry.id;
+
+      // Thumbnail
+      var thumb = document.createElement('img');
+      thumb.className = 'file-thumb';
+      thumb.alt = 'preview';
+      thumb.src = URL.createObjectURL(entry.file);
+
+      // Info block
+      var info = document.createElement('div');
+      info.className = 'file-info';
+
+      var lbl = document.createElement('span');
+      lbl.className = 'file-name-label';
+      lbl.textContent = 'Artwork title';
+
+      var nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.className = 'file-name-input';
+      nameInput.value = entry.artworkTitle;
+      nameInput.placeholder = 'e.g. Untitled #3, The Garden, Portrait of…';
+      nameInput.setAttribute('aria-label','Artwork title for image ' + (idx+1));
+      nameInput.addEventListener('input', function(e){
+        var id = parseInt(e.target.closest('.file-item').dataset.id);
+        var match = files.find(function(x){ return x.id === id; });
+        if(match) match.artworkTitle = e.target.value;
+      });
+
+      var meta = document.createElement('div');
+      meta.className = 'file-meta';
+      meta.textContent = entry.file.name + ' · ' + fmtSize(entry.file.size);
+
+      info.appendChild(lbl);
+      info.appendChild(nameInput);
+      info.appendChild(meta);
+
+      // Remove
+      var rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'file-remove';
+      rm.innerHTML = '&times;';
+      rm.setAttribute('aria-label','Remove file');
+      rm.addEventListener('click', function(e){
+        var id = parseInt(e.target.closest('.file-item').dataset.id);
+        files = files.filter(function(x){ return x.id !== id; });
+        render();
+      });
+
+      item.appendChild(thumb);
+      item.appendChild(info);
+      item.appendChild(rm);
+      fileList.appendChild(item);
+    });
+
+    fileCount.textContent = files.length ? files.length + ' / ' + MAX_FILES + ' files' : '';
+  }
+
+  function fmtSize(b){
+    if(b < 1024) return b + ' B';
+    if(b < 1048576) return (b/1024).toFixed(1) + ' KB';
+    return (b/1048576).toFixed(1) + ' MB';
+  }
+
+  // ── Submission ──
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    hideMsg();
+
+    var fname = $('fname').value.trim();
+    var lname = $('lname').value.trim();
+    var email = $('email').value.trim();
+    var phone = $('phone').value.trim();
+    var instagram = $('instagram').value.trim().replace(/^@/,'');
+    var bio   = $('bio').value.trim();
+    var medium= $('medium').value.trim();
+    var location = $('art-location').value.trim();
+    var notes = $('notes').value.trim();
+
+    // Validate
+    if(!fname || !lname){ showMsg('error','Please enter your first and last name.'); return; }
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showMsg('error','Please enter a valid email address.'); return; }
+    if(!bio){ showMsg('error','Please write a short biography or artist statement.'); return; }
+    if(!medium){ showMsg('error','Please specify your primary medium or technique.'); return; }
+    if(files.length === 0){ showMsg('error','Please upload at least one artwork image.'); return; }
+
+    // Check all artworks have a title
+    var untitled = files.filter(function(f){ return !f.artworkTitle.trim(); });
+    if(untitled.length > 0){
+      showMsg('error','Please give a title to each artwork image (' + untitled.length + ' missing).');
+      return;
+    }
+
+    // Build FormData
+    var fd = new FormData();
+    fd.append('first_name', fname);
+    fd.append('last_name', lname);
+    fd.append('email', email);
+    fd.append('phone', phone);
+    fd.append('instagram', instagram);
+    fd.append('biography', bio);
+    fd.append('medium', medium);
+    fd.append('location', location);
+    fd.append('notes', notes);
+    fd.append('submission_date', new Date().toISOString());
+
+    // File metadata JSON
+    var fileMeta = files.map(function(entry, i){
+      return {
+        index: i,
+        artworkTitle: entry.artworkTitle,
+        originalName: entry.file.name,
+        size: entry.file.size,
+        type: entry.file.type
+      };
+    });
+    fd.append('file_metadata', JSON.stringify(fileMeta));
+
+    // Append files — named with artwork title
+    files.forEach(function(entry, i){
+      var ext = entry.file.name.match(/\.[^.]+$/);
+      ext = ext ? ext[0] : '';
+      var safe = entry.artworkTitle.replace(/[^a-zA-Z0-9_\-\s\u00C0-\u024F]/g,'').replace(/\s+/g,'_') || 'artwork_'+(i+1);
+      fd.append('file_' + i, entry.file, safe + ext);
+    });
+
+    // Send via XHR for progress
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    progressWrap.classList.add('visible');
+    progressFill.style.width = '0%';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', WEBHOOK_URL, true);
+
+    xhr.upload.addEventListener('progress', function(ev){
+      if(ev.lengthComputable){
+        var pct = Math.round((ev.loaded / ev.total) * 100);
+        progressFill.style.width = pct + '%';
+        progressText.textContent = 'Uploading… ' + pct + '%';
+      }
+    });
+
+    xhr.addEventListener('load', function(){
+      progressFill.style.width = '100%';
+      if(xhr.status >= 200 && xhr.status < 300){
+        showMsg('success','Thank you! Your files have been submitted successfully. We will be in touch soon.');
+        form.reset();
+        files = [];
+        render();
+        progressWrap.classList.remove('visible');
+      } else {
+        showMsg('error','Submission failed (status ' + xhr.status + '). Please try again or contact us directly.');
+        progressWrap.classList.remove('visible');
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+    });
+
+    xhr.addEventListener('error', function(){
+      showMsg('error','Connection error. Please check your internet and try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+      progressWrap.classList.remove('visible');
+    });
+
+    xhr.send(fd);
+  });
+
+  function showMsg(type, text){
+    msgEl.className = 'msg ' + type;
+    msgEl.textContent = text;
+    msgEl.style.display = 'block';
+    msgEl.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+  function hideMsg(){
+    msgEl.style.display = 'none';
+    msgEl.className = 'msg';
+  }
+
+})();
+</script>
+
+</body>
+</html>
