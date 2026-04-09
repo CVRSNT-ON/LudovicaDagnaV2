@@ -248,16 +248,16 @@ img{display:block;max-width:100%}
   margin-top:1rem;
   display:flex;
   flex-direction:column;
-  gap:.6rem;
+  gap:.85rem;
 }
 .file-item{
   display:flex;
-  align-items:center;
-  gap:.7rem;
-  padding:.6rem .8rem;
+  align-items:flex-start;
+  gap:.85rem;
+  padding:.85rem;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:8px;
+  border-radius:10px;
   animation:fadeSlideIn .3s ease;
 }
 @keyframes fadeSlideIn{
@@ -265,8 +265,8 @@ img{display:block;max-width:100%}
   to{opacity:1;transform:translateY(0)}
 }
 .file-thumb{
-  width:52px;
-  height:52px;
+  width:72px;
+  height:72px;
   border-radius:6px;
   object-fit:cover;
   flex-shrink:0;
@@ -275,7 +275,7 @@ img{display:block;max-width:100%}
 .file-info{flex:1;min-width:0}
 
 .file-name-label{
-  font-size:.62rem;
+  font-size:.6rem;
   font-weight:600;
   letter-spacing:.12em;
   text-transform:uppercase;
@@ -304,10 +304,33 @@ img{display:block;max-width:100%}
   background:var(--bg);
   border-color:var(--accent);
 }
+.artwork-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.4rem;
+  margin-top:.4rem;
+}
+.artwork-detail-input{
+  width:100%;
+  padding:.35rem .5rem;
+  font-family:var(--body);
+  font-size:.75rem;
+  font-weight:300;
+  color:var(--text);
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:4px;
+  outline:none;
+  transition:border-color .2s;
+}
+.artwork-detail-input:focus{
+  border-color:var(--accent);
+}
+.artwork-detail-input::placeholder{color:var(--text-l);opacity:.5}
 .file-meta{
-  font-size:.65rem;
+  font-size:.62rem;
   color:var(--text-l);
-  margin-top:.1rem;
+  margin-top:.3rem;
   padding-left:.55rem;
 }
 .file-remove{
@@ -457,7 +480,8 @@ img{display:block;max-width:100%}
   .form-container{padding:2rem 1.15rem 3rem}
   .field-row{grid-template-columns:1fr}
   .file-item{flex-wrap:wrap}
-  .file-thumb{width:44px;height:44px}
+  .file-thumb{width:56px;height:56px}
+  .artwork-details{grid-template-columns:1fr}
   .btn-submit{width:100%;padding:1rem 1rem}
   .input-prefix{padding:0 .6rem;font-size:.82rem}
 }
@@ -557,7 +581,7 @@ img{display:block;max-width:100%}
     <div class="form-section">
       <h2 class="form-section-title">Artwork Images</h2>
       <p class="field-hint" style="margin-top:-.75rem;margin-bottom:1.25rem">
-        Upload up to 20 images. For each image, please enter the <strong>title of the artwork</strong> — this will be displayed on your website.
+        Upload up to 20 images. The title is pre-filled from the file name — you can edit it. For each artwork, please also specify the <strong>technique</strong> and <strong>dimensions in cm</strong>.
       </p>
 
       <div class="upload-section">
@@ -662,7 +686,7 @@ img{display:block;max-width:100%}
       if(files.length >= MAX_FILES){ showMsg('error','Maximum ' + MAX_FILES + ' files allowed.'); break; }
       if(ALLOWED.indexOf(f.type) === -1){ showMsg('error','"' + f.name + '" — only JPG, PNG, WebP accepted.'); continue; }
       if(f.size > MAX_SIZE_BYTES){ showMsg('error','"' + f.name + '" exceeds the 10 MB limit.'); continue; }
-      files.push({ id: ++uid, file: f, artworkTitle: '' });
+      files.push({ id: ++uid, file: f, artworkTitle: f.name.replace(/\.[^.]+$/, '').replace(/[_-]/g, ' '), technique: '', dimensions: '' });
     }
     render();
   }
@@ -700,12 +724,44 @@ img{display:block;max-width:100%}
         if(match) match.artworkTitle = e.target.value;
       });
 
+      // Technique + Dimensions row
+      var detailsRow = document.createElement('div');
+      detailsRow.className = 'artwork-details';
+
+      var techInput = document.createElement('input');
+      techInput.type = 'text';
+      techInput.className = 'artwork-detail-input';
+      techInput.value = entry.technique;
+      techInput.placeholder = 'Technique (e.g. Oil on canvas)';
+      techInput.setAttribute('aria-label','Technique for image ' + (idx+1));
+      techInput.addEventListener('input', function(e){
+        var id = parseInt(e.target.closest('.file-item').dataset.id);
+        var match = files.find(function(x){ return x.id === id; });
+        if(match) match.technique = e.target.value;
+      });
+
+      var dimInput = document.createElement('input');
+      dimInput.type = 'text';
+      dimInput.className = 'artwork-detail-input';
+      dimInput.value = entry.dimensions;
+      dimInput.placeholder = 'Dimensions (e.g. 120 × 80 cm)';
+      dimInput.setAttribute('aria-label','Dimensions for image ' + (idx+1));
+      dimInput.addEventListener('input', function(e){
+        var id = parseInt(e.target.closest('.file-item').dataset.id);
+        var match = files.find(function(x){ return x.id === id; });
+        if(match) match.dimensions = e.target.value;
+      });
+
+      detailsRow.appendChild(techInput);
+      detailsRow.appendChild(dimInput);
+
       var meta = document.createElement('div');
       meta.className = 'file-meta';
       meta.textContent = entry.file.name + ' · ' + fmtSize(entry.file.size);
 
       info.appendChild(lbl);
       info.appendChild(nameInput);
+      info.appendChild(detailsRow);
       info.appendChild(meta);
 
       // Remove
@@ -782,6 +838,8 @@ img{display:block;max-width:100%}
       return {
         index: i,
         artworkTitle: entry.artworkTitle,
+        technique: entry.technique,
+        dimensions: entry.dimensions,
         originalName: entry.file.name,
         size: entry.file.size,
         type: entry.file.type
